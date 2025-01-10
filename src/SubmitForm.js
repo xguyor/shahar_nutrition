@@ -71,15 +71,14 @@ function SubmitForm() {
             <div className="background-wrapper"></div> {/* Background */}
             <section className="form-section">
                 <div className="form-card">
-                    <h2>Get Started</h2>
-                    <p>Sign up to receive personalized nutrition plans tailored for you!</p>
+                    <h2>שגרו אליי את הפרטים שלכם</h2>
                     <form className="customer-form" onSubmit={handleSubmit}>
                         <input
                             type="text"
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            placeholder="Full Name"
+                            placeholder="שם מלא"
                             required
                         />
                         <input
@@ -87,7 +86,7 @@ function SubmitForm() {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            placeholder="Email Address"
+                            placeholder="אימייל"
                             required
                         />
                         <input
@@ -95,13 +94,13 @@ function SubmitForm() {
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            placeholder="Phone Number"
+                            placeholder="מספר טלפון"
                         />
                         <textarea
                             name="goals"
                             value={formData.goals}
                             onChange={handleChange}
-                            placeholder="Tell us your health goals..."
+                            placeholder="?מה הן המטרות שלך בתכנית"
                             rows="4"
                         />
                         <button type="submit">Submit</button>

@@ -39,8 +39,12 @@
     color: white;
     cursor: pointer;
     display: none;
+    transition: color 0.3s ease; /* Add smooth transition */
 }
 
+.menu-icon:hover {
+    color: #2196f3; /* Blue color on hover */
+}
 .nav-links {
     display: flex;
     gap: 30px;
@@ -54,9 +58,10 @@
 }
 
 .nav-links a:hover {
-    color: #4caf50;
+    color: #4caf4e;
 }
 
+/* Mobile View - Hidden by Default */
 @media (max-width: 768px) {
     .menu-icon {
         display: block;
@@ -64,9 +69,18 @@
 
     .nav-links {
         display: none;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        padding: 20px 0;
     }
 
     .nav-links.active {
         display: flex;
     }
 }
+
