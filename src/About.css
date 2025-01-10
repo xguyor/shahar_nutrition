@@ -1,15 +1,26 @@
+/* Overlay Styling */
 .overlay {
-    display: none; /* Default hidden */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align content to the top to allow proper scrolling */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
     z-index: 1000;
-    animation: fadeIn 0.3s ease; /* Add a fade-in animation */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    overflow-y: auto; /* Allow scrolling for the entire overlay */
+    padding-top: 120px; /* Push content below the menu */
+    padding-bottom: 20px; /* Add padding at the bottom */
+}
+
+.overlay.fade-out {
+    opacity: 0;
+    visibility: hidden;
 }
 
 @keyframes fadeIn {
@@ -21,25 +32,29 @@
     }
 }
 
+/* Overlay Content */
 .overlay-content {
     background: linear-gradient(135deg, #9aa4ff, #c4fad1);
     padding: 30px;
     border-radius: 16px;
-    max-width: 600px; /* Increased width */
+    max-width: 600px; /* Maximum width */
     width: 80%;
-    text-align: center;
+    max-height: calc(100vh - 140px); /* Subtract padding to keep within viewport */
+    text-align: right;
+    direction: rtl; /* Right-to-left for Hebrew */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     position: relative;
     z-index: 1001;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    transform: scale(1);
+    overflow-y: auto; /* Enable scrolling inside content */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
 }
 
-.overlay-content:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+.overlay-content::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit browsers */
 }
 
+/* Text Styling */
 h2 {
     font-size: 2rem;
     color: #fff;
@@ -54,11 +69,12 @@ p {
     line-height: 1.8;
 }
 
+/* Close Button */
 .close-btn {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: #4c9daf; /* Green base color */
+    background: #4c9daf;
     border: none;
     color: #fff;
     font-size: 24px;
@@ -69,13 +85,40 @@ p {
 }
 
 .close-btn:hover {
-    background: #388e70; /* Darker green on hover */
-    transform: scale(1.2); /* Make the button pop on hover */
-    box-shadow: 0 0 15px rgba(108, 142, 56, 0.8); /* Green glow effect */
+    background: #388e70;
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(108, 142, 56, 0.8);
 }
 
-
-/* Show overlay when active */
+/* Active Overlay */
 .overlay-active {
     display: flex;
+}
+
+/* Text Styling */
+h3 {
+    font-size: 1.5rem;
+    color: #4caf50;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+p, li {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: right;
+}
+
+/* Nested Lists Styling */
+ul {
+    list-style: disc;
+    padding-right: 20px;
+    line-height: 1.8;
+}
+
+ul ul {
+    list-style: circle;
+    padding-right: 30px;
 }

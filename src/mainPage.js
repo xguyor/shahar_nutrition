@@ -36,16 +36,9 @@ function MainPage() {
         <div className="App">
             <NavBar />
 
-            <header className="hero">
-                <div className="overlay">
-                    <h1>Welcome to Shahar Nutrition</h1>
-                    <p>Your partner in achieving optimal health and wellness.</p>
-                </div>
-            </header>
-
             <main>
-                <VideoCarousel/>
                 <SubmitForm/>
+                <VideoCarousel/>
                 <SocialLinks/> {/* Use the SocialLinks component here */}
             </main>
 
