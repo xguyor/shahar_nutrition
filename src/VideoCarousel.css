@@ -3,6 +3,9 @@
     margin: 50px auto;
     position: relative;
     max-width: 800px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 h2 {

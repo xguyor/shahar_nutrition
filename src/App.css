@@ -4,7 +4,7 @@ body {
     color: #333;
     background-color: #f4f4f9;
     background: url("../images/main_background.jpg") no-repeat center center fixed;
-    background-size: 100%; /* Increase value for zoom out, decrease for zoom in */
+    background-size: 150%; /* Increase value for zoom out, decrease for zoom in */
 }
 
 .App {
@@ -12,7 +12,6 @@ body {
 }
 
 .hero {
-    background: url("https://source.unsplash.com/1600x900/?nutrition,healthy") no-repeat center center/cover;
     height: 60vh;
     display: flex;
     justify-content: center;
