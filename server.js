@@ -1,14 +1,20 @@
 const express = require("express");
-const cors = require("cors");  // Import cors
+const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000; // Use environment PORT for deployment
 
+// Middleware
 app.use(express.json());
-app.use(cors());  // Enable CORS for all routes
+app.use(cors());
 
+// Serve the React build files
+const clientBuildPath = path.join(__dirname, "build");
+app.use(express.static(clientBuildPath));
+
+// API route
 app.post("/submit", (req, res) => {
     const { name, email, phone, goals } = req.body;
 
@@ -19,7 +25,7 @@ app.post("/submit", (req, res) => {
   Goals: ${goals || "N/A"}
   -------------------------------
   `;
-    console.log("Received Data:", req.body);  // Log incoming data
+    console.log("Received Data:", req.body);
 
     const filePath = path.join(__dirname, "leads.txt");
 
@@ -32,6 +38,12 @@ app.post("/submit", (req, res) => {
     });
 });
 
+// Catch-all route to serve React app for other requests
+app.get("*", (req, res) => {
+    res.sendFile(path.join(clientBuildPath, "index.html"));
+});
+
+// Start the server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
