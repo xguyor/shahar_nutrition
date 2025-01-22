@@ -2,10 +2,12 @@
   "name": "shahar_nutrition",
   "version": "1.0.0",
   "scripts": {
-    "dev": "concurrently \"npm start --prefix frontend\" \"npm start --prefix api\"",
-    "build": "npm run build --prefix frontend"
+    "dev": "concurrently \"npm run start --prefix frontend\" \"npm run start --prefix api\"",
+    "build": "npm run build --prefix frontend",
+    "start": "node api/server.js"
   },
-  "devDependencies": {
-    "concurrently": "^9.1.2"
-  }
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "devDependencies": {}
 }
