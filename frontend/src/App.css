@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #f4f4f9;
+    background: url("../images/main_background.jpg") no-repeat center center fixed;
+    background-size: 150%; /* Increase value for zoom out, decrease for zoom in */
+}
+
+.App {
+    text-align: center;
+}
+
+.hero {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    position: relative;
+}
+
+.hero .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 30px 40px;
+    border-radius: 15px;
+}
+
+main {
+    padding: 40px 20px;
+}
+
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 40px;
+}
+
+body {
+    padding-top: 60px;  /* Ensure content doesn't get hidden under the fixed nav */
+}
+
+
+/* Logo Styling */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00bcd4;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.logo:hover {
+    color: white;
+}
+
