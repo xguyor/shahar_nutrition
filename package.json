@@ -1,6 +1,4 @@
 {
-  "name": "shahar_nutrition",
-  "version": "1.0.0",
   "scripts": {
     "dev": "concurrently \"npm run start --prefix frontend\" \"npm run start --prefix api\"",
     "build": "npm run build --prefix frontend",
@@ -8,6 +6,5 @@
   },
   "dependencies": {
     "concurrently": "^8.2.0"
-  },
-  "devDependencies": {}
+  }
 }
