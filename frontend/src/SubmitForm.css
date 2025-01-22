@@ -34,7 +34,7 @@
 
 /* Full-page background effect when form is in view */
 .full-page-bg {
-    background-image: url('/images/submit_form_background.jpg');
+    background-image: url('../images/submit_form_background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
