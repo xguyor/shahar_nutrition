@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 // Serve the React build files
-const clientBuildPath = path.join(__dirname, "build");
+const clientBuildPath = path.join(__dirname, "../frontend/build");
 app.use(express.static(clientBuildPath));
 
 // API route
