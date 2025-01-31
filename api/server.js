@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 5000; // Use environment PORT for deployment
+const PORT = process.env.PORT || 5001; // Use environment PORT for deployment
 
 // Middleware
 app.use(express.json());

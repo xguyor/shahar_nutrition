@@ -19,7 +19,8 @@ function SubmitForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch("http://localhost:5000/submit", {
+        const API_URL = process.env.REACT_APP_API_URL || "/api";
+        fetch(`${API_URL}/submit`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
