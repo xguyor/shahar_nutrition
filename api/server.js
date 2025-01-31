@@ -15,7 +15,7 @@ const clientBuildPath = path.join(__dirname, "../frontend/build");
 app.use(express.static(clientBuildPath));
 
 // API route
-app.post("/submit", (req, res) => {
+app.post("/api/submit", (req, res) => {
     const { name, email, phone, goals } = req.body;
 
     const formattedData = `
