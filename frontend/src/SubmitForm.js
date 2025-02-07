@@ -17,31 +17,27 @@ function SubmitForm() {
         }));
     };
 
+    const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbyE_Joa4V8OtCcd5XDtBCwQTo6XQZSFS7lztzvcsQ_BVT625nd0-fs1cv6bHWmeyv0f/exec";
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        const API_URL = process.env.REACT_APP_API_URL || "/api";
-        fetch(`${API_URL}/submit`, {
+
+        fetch(GOOGLE_SHEET_API_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
+            mode: "no-cors",
             body: JSON.stringify(formData),
         })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Failed to save client information.");
-                }
-                return response.text();
-            })
-            .then((message) => {
-                alert(message);
-                setFormData({ name: "", email: "", phone: "", goals: "" });
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-                alert("Failed to save client information.");
-            });
+        // ✅ Show success message immediately, without checking response
+        alert("Form submitted successfully!");
+
+        // ✅ Clear form fields
+        setFormData({ name: "", email: "", phone: "", goals: "" });
     };
+
 
     // Spin transition effect on background change
     useEffect(() => {

@@ -5,9 +5,9 @@ function PreviewModal({ onEnter }) {
     return (
         <div className="modal-overlay">
             <div className="modal-content">
-                <h1>Welcome to Shahar Nutrition</h1>
-                <p>Discover personalized nutrition plans crafted to meet your health goals.</p>
-                <button className="enter-btn" onClick={onEnter}>Explore Now</button>
+                <h1>רוצה להיות בריא יותר?</h1>
+                <p>כנס ותגלה כל מה שאתה צריך כדי לנהל אורח חיים בריא יותר, בזול ובקלות</p>
+                <button className="enter-btn" onClick={onEnter}>תלחצו לא להתבייש</button>
             </div>
         </div>
     );
