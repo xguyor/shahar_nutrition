@@ -39,11 +39,11 @@ function MainPage() {
             <main>
                 <SubmitForm/>
                 <VideoCarousel/>
-                <SocialLinks/> {/* Use the SocialLinks component here */}
+                <SocialLinks/>
             </main>
 
             <footer>
-                <p>&copy; 2025 Shahar Nutrition. All rights reserved.</p>
+                <p>&copy; 2024 Shahar Nutrition. All rights reserved.</p>
             </footer>
         </div>
     );
