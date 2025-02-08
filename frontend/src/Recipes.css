@@ -5,33 +5,43 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* ✅ Dark transparent background */
+    background: rgba(0, 0, 0, 0.6); /* ✅ Dark Transparent Background */
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* ✅ Ensures Perfect Centering */
     z-index: 1000;
+    padding: 20px;
+    overflow-x: hidden; /* ✅ Prevents Horizontal Scrolling Issues */
 }
 
-/* 🍏 Recipes Content */
+/* 🍏 Recipes Content (Final Centering Fix) */
 .recipes-content {
     background: white;
-    padding: 40px;
+    padding: 30px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     text-align: center;
-    max-width: 600px;
+    max-width: 500px;
     width: 90%;
-    animation: fadeIn 0.5s ease-out;
+    max-height: 80vh; /* ✅ Limits Height */
+    overflow-y: auto;
+    animation: fadeIn 0.4s ease-out;
+    position: fixed;
+
+    /* ✅ FINAL FIX: Always Center from the Start */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* ✅ Close Button */
 .close-btn {
     position: absolute;
-    top: 15px;
-    right: 20px;
+    top: 10px;
+    left: 15px; /* ✅ Adjusted for RTL */
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
     color: #333;
     transition: color 0.3s ease;
@@ -43,49 +53,51 @@
 
 /* ✨ Header */
 .recipes-content h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #2c4a23;
+    margin-bottom: 10px;
 }
 
 /* 🍏 Subtext */
 .recipes-content p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #555;
     text-align: center;
-
 }
 
 /* 📌 Recipes Grid */
 .recipes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center; /* ✅ Center the grid */
 }
 
 /* 🍽️ Recipe Card */
 .recipe-card {
     background: #e8f5e9;
     color: #2c4a23;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
 /* 🥗 Hover Effect */
 .recipe-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* 📢 Coming Soon */
 .coming-soon {
-    margin-top: 20px;
+    margin-top: 15px;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
     color: #ff5722;
 }
@@ -93,11 +105,39 @@
 /* 🎭 Fade-in Animation */
 @keyframes fadeIn {
     from {
-        transform: translateY(-20px);
+        transform: translate(-50%, -55%);
         opacity: 0;
     }
     to {
-        transform: translateY(0);
+        transform: translate(-50%, -50%);
         opacity: 1;
+    }
+}
+
+/* ✅ Mobile Adjustments */
+@media screen and (max-width: 768px) {
+    .recipes-content {
+        max-width: 90%;
+        width: 85%;
+        padding: 20px;
+    }
+
+    .close-btn {
+        font-size: 1.6rem;
+        left: 10px;
+    }
+
+    .recipes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .recipe-card {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .recipes-content h2 {
+        font-size: 1.5rem;
     }
 }
