@@ -1,6 +1,7 @@
 /* 🌟 Global Styles */
 body {
     margin: 0;
+    padding: 0;
     font-family: 'Rubik', 'Assistant', 'Varela Round', sans-serif;
     color: #333;
     background-color: #f4f4f9;
@@ -10,9 +11,32 @@ body {
     text-align: right;
     padding-top: 60px; /* Ensures content isn't hidden under the navbar */
 
-    /* ✅ Fix Background Image Scaling */
-    background: url("../images/main_background.jpg") no-repeat center center fixed;
+    /* ✅ Fix Background Image Scaling & Remove Scrollbars */
+    background: url("../images/main_background.jpg") no-repeat center center;
     background-size: cover;
+    background-attachment: fixed;
+
+    /* ✅ Prevent unwanted scrollbars */
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+/* ✅ Fix for iPhone Chrome & Safari */
+@supports (-webkit-touch-callout: none) {
+    body {
+        background-attachment: scroll !important;
+        height: -webkit-fill-available;
+    }
+}
+
+/* ✅ Remove Scrollbars on Full Page */
+html, body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100%;
+    min-height: 100vh;
 }
 
 /* ✅ Exclude Navbar from RTL */
@@ -35,6 +59,7 @@ body {
     color: #fff;
     position: relative;
     text-align: center;
+    overflow: hidden;
 }
 
 /* ✅ Improved Overlay */
@@ -55,7 +80,8 @@ main {
 /* ✅ Fix for Mobile */
 @media screen and (max-width: 768px) {
     body {
-        background-size: 180%; /* ✅ Ensures better fit on small screens */
+        background-size: cover; /* ✅ Ensures proper stretching */
+        min-height: 100vh;
     }
 
     .hero {
