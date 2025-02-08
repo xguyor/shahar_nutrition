@@ -30,11 +30,15 @@
 }
 
 .instagram {
-    color: #601414;
+    color: #742727;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .tiktok {
     color: #000000;
+}
+
+.facebook {
+    color: #002da5;
 }
