@@ -102,7 +102,7 @@ function SubmitForm() {
                             placeholder="מהן המטרות שלך בתכנית?"
                             rows="4"
                         />
-                        <button type="submit">Submit</button>
+                        <button type="submit">שלח!</button>
                     </form>
                 </div>
             </section>
