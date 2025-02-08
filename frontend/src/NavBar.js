@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import About from "./About";
-import Recipes from "./Recipes"; // ✅ Import Recipes Component
+import Recipes from "./Recipes";
 import "./NavBar.css";
 
 function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [aboutOpen, setAboutOpen] = useState(false);
-    const [recipesOpen, setRecipesOpen] = useState(false); // ✅ Add state for Recipes overlay
+    const [recipesOpen, setRecipesOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
     const navRef = useRef(null);
@@ -18,14 +18,14 @@ function NavBar() {
     const openAbout = (event) => {
         event.preventDefault();
         setAboutOpen(true);
-        setRecipesOpen(false); // ✅ Close Recipes if open
+        setRecipesOpen(false);
         setMenuOpen(false);
     };
 
     const openRecipes = (event) => {
         event.preventDefault();
         setRecipesOpen(true);
-        setAboutOpen(false); // ✅ Close About if open
+        setAboutOpen(false);
         setMenuOpen(false);
     };
 
@@ -34,7 +34,6 @@ function NavBar() {
         setRecipesOpen(false);
     };
 
-    // ✅ Close menu if clicking outside of the navbar
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (navRef.current && !navRef.current.contains(event.target)) {
@@ -63,11 +62,11 @@ function NavBar() {
         <>
             <nav ref={navRef} className={`navbar ${scrolled ? "scrolled" : ""}`}>
                 <div className="navbar-container">
-                    <a href="#home" className="logo">Shahar Nutrition</a>
+                    <a href="#home" className="logo">🥗 Shahar Nutrition</a>
 
                     <div className={`nav-links ${menuOpen ? "active" : ""}`}>
-                        <a href="#about" onClick={openAbout}>אודות התכנית</a>
-                        <a href="#recipes" onClick={openRecipes}>מתכונים</a> {/* ✅ Opens Recipes Overlay */}
+                        <a href="#about" onClick={openAbout}>📖 אודות</a>
+                        <a href="#recipes" onClick={openRecipes}>😋 מתכונים</a>
                     </div>
 
                     <div className="menu-icon" onClick={toggleMenu}>
@@ -77,7 +76,7 @@ function NavBar() {
             </nav>
 
             {aboutOpen && <About closeOverlay={closeOverlays} />}
-            {recipesOpen && <Recipes closeOverlay={closeOverlays} />} {/* ✅ Recipes Overlay */}
+            {recipesOpen && <Recipes closeOverlay={closeOverlays} />}
         </>
     );
 }

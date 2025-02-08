@@ -1,25 +1,29 @@
-/* 🌟 Navbar Styles */
+/* ✅ Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+
+/* Main Navigation Bar */
 .navbar {
     position: fixed;
     width: 100%;
     top: 0;
     right: 0;
-    left: 0; /* ✅ Ensures it stays within the viewport */
-    background: rgba(255, 255, 255, 0.9); /* ✅ Transparent background */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    left: 0;
+    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease-in-out;
-    padding: 10px 20px;
+    padding: 12px 20px;
     z-index: 1000;
-    direction: rtl; /* ✅ Ensures proper right alignment */
+    border-bottom: 3px solid #1b5e20;
+    direction: ltr;
 }
 
-/* ✅ Scrolled effect */
+/* Scrolled Effect */
 .navbar.scrolled {
-    background: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    background: #388e3c;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
-/* 🌟 Navbar Container */
+/* Navbar Layout */
 .navbar-container {
     display: flex;
     align-items: center;
@@ -29,66 +33,87 @@
     padding: 0 20px;
 }
 
-/* ✅ Logo */
+/* ✅ Unique Font for the Logo */
 .logo {
-    font-size: 1.4rem;
-    font-weight: bold;
+    font-size: 1.8rem;
+    font-weight: 700;
     text-decoration: none;
-    color: #333;
+    color: white;
+    font-family: 'Comfortaa', cursive; /* ✅ Unique Google Font */
+    letter-spacing: 1px;
 }
 
-/* ✅ Navigation Links */
+/* Navigation Links */
 .nav-links {
     display: flex;
-    gap: 15px;
-    margin-right: auto; /* ✅ Push links to the right */
+    gap: 20px;
+    margin-right: auto;
 }
 
-/* ✅ Hover Effect - Floating Text */
+/* Navbar Link Styling */
 .nav-links a {
     position: relative;
     display: inline-block;
     text-decoration: none;
-    font-size: 1rem;
-    color: #333;
-    padding: 8px 12px;
+    font-size: 1.1rem;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
     transition: color 0.3s ease, transform 0.3s ease-in-out;
+    font-family: 'Comfortaa', sans-serif; /* ✅ Apply to all links */
+    direction: rtl;
 }
 
-/* ✅ Floating effect on hover */
+/* Hover Effect */
 .nav-links a:hover {
-    color: rgba(161, 64, 72, 0.4);
+    color: #f1f8e9;
     transform: translateY(-3px);
 }
 
-
-/* ✅ Mobile Menu Icon */
-.menu-icon {
-    font-size: 1.8rem;
-    cursor: pointer;
-    display: none; /* Hidden by default */
-    margin-left: auto; /* ✅ Push icon to the right */
+/* Underline Effect on Hover */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0%;
+    height: 3px;
+    background: #ffeb3b;
+    transition: width 0.3s ease-out, left 0.3s ease-out;
 }
 
-/* ✅ Responsive for Mobile */
+.nav-links a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Mobile Menu Icon */
+.menu-icon {
+    font-size: 2rem;
+    cursor: pointer;
+    display: none;
+    color: white;
+}
+
+/* Responsive for Mobile */
 @media screen and (max-width: 768px) {
     .nav-links {
-        display: none; /* Hide on mobile */
+        display: none;
         flex-direction: column;
         position: absolute;
         top: 60px;
-        right: 10px; /* ✅ Ensure right alignment */
-        background: white;
-        padding: 10px;
-        border-radius: 8px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        right: 10px;
+        background: #1b5e20;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .nav-links.active {
-        display: flex; /* Show when menu is open */
+        display: flex;
     }
 
     .menu-icon {
-        display: block; /* Show menu icon on mobile */
+        display: block;
     }
 }
