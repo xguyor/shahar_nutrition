@@ -1,11 +1,11 @@
 /* 🌟 Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&family=Rubik:wght@300;400;500&family=Assistant:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&family=Rubik:wght@400;500;700&family=Assistant:wght@400;600;800&display=swap');
 
 /* 🌟 Overlay Styling */
 .overlay {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* ✅ Align content to the top */
+    align-items: flex-start;
     position: fixed;
     top: 0;
     left: 0;
@@ -16,27 +16,28 @@
     opacity: 1;
     visibility: visible;
     transition: opacity 0.5s ease, visibility 0.5s ease;
-    overflow-y: auto; /* ✅ Allow scrolling for the entire overlay */
-    padding-top: 80px; /* ✅ Push content below the menu */
-    padding-bottom: 20px; /* ✅ Prevent content from sticking to the bottom */
-    scroll-behavior: smooth; /* ✅ Smooth scrolling */
+    overflow-y: auto;
+    padding-top: 80px;
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
 }
 
-/* ✅ Overlay Content (Limit Height & Prevent Bottom Cut-off) */
+/* ✅ Ensure Full Dark Background */
 .overlay-content {
-    background: linear-gradient(135deg, #9aa4ff, #c4fad1);
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../images/about.jpg") center center/cover no-repeat;
     padding: 30px;
     border-radius: 16px;
     max-width: 600px;
     width: 80%;
-    max-height: 80vh; /* ✅ Ensure it doesn't take full screen */
+    max-height: 80vh;
     text-align: right;
     direction: rtl;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-    position: relative;
     z-index: 1001;
-    overflow-y: auto; /* ✅ Enable smooth scrolling inside */
-    -webkit-overflow-scrolling: touch; /* ✅ Smooth scrolling on touch devices */
+    overflow-y: auto; /* ✅ Allows scrolling inside */
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* ✅ Hide scrollbar for Firefox */
 }
 
@@ -45,51 +46,82 @@
     display: none;
 }
 
-/* 🌟 Header Styling - Soft & Rounded */
+/* ✅ Fix for Mobile */
+@media screen and (max-width: 768px) {
+    .overlay-content {
+        max-width: 90%;
+        width: 85%;
+        padding: 20px;
+        max-height: 70vh;
+    }
+}
+
+/* ✅ Fix: Dark Overlay Covers Full Scrollable Content */
+.overlay-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%; /* ✅ Ensure it covers full height */
+    border-radius: 16px;
+    z-index: -1;
+    pointer-events: none; /* ✅ Prevents overlay from interfering with clicks */
+}
+
+/* ✅ Hide Scrollbar */
+.overlay-content::-webkit-scrollbar {
+    display: none;
+}
+
+/* 🌟 Headers - Green */
 h2 {
     font-family: 'Varela Round', sans-serif;
     font-size: 1.8rem;
-    font-weight: 400;
-    color: #fff;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    font-weight: 700;
+    color: #4caf50; /* ✅ Bright Green */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
     text-align: center;
 }
 
-/* 🌟 Subheaders - Balanced & Readable */
 h3 {
     font-family: 'Rubik', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: #4caf50;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2e7d32; /* ✅ Dark Green */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
     margin-bottom: 10px;
     text-align: right;
 }
 
-/* ✅ Body Text - Clean & Clear */
+/* ✅ Body Text - Ensures Readability Everywhere */
 p, li {
     font-family: 'Assistant', sans-serif;
-    font-size: 1rem;
-    line-height: 1.8;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.9;
     margin-bottom: 10px;
-    color: #333;
+    color: rgba(255, 255, 255, 0.95); /* ✅ Ensures bright text */
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
     text-align: right;
 }
 
-/* ✅ Active Overlay */
-.overlay-active {
-    display: flex;
-}
-
-/* ✅ Smooth Nested Lists */
+/* ✅ Full Overlay Coverage for Lists */
 ul {
     list-style: disc;
     padding-right: 20px;
-    line-height: 1.8;
+    line-height: 1.9;
 }
 
 ul ul {
     list-style: circle;
     padding-right: 30px;
+}
+
+/* ✅ Active Overlay */
+.overlay-active {
+    display: flex;
 }
 
 /* ✅ Mobile Adjustments */
@@ -98,7 +130,7 @@ ul ul {
         max-width: 90%;
         width: 85%;
         padding: 20px;
-        max-height: 70vh; /* ✅ Ensure it doesn’t get cut off */
+        max-height: 70vh;
     }
 
     .close-btn {
@@ -115,6 +147,6 @@ ul ul {
     }
 
     p, li {
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
 }
