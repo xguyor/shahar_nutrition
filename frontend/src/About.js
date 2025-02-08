@@ -12,9 +12,6 @@ function About({ closeOverlay }) {
     return (
         <div className="overlay overlay-active" onClick={handleClickOutside}>
             <div className="overlay-content">
-                <button className="close-btn" onClick={closeOverlay}>
-                    ×
-                </button>
                 <h2>תכנית הליווי - אורח חיים בריא</h2>
 
                 <div className="program-section">

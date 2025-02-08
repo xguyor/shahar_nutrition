@@ -1,8 +1,8 @@
-/* Overlay Styling */
+/* 🌟 Overlay Styling */
 .overlay {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align content to the top to allow proper scrolling */
+    align-items: flex-start; /* ✅ Align content to the top */
     position: fixed;
     top: 0;
     left: 0;
@@ -13,96 +13,44 @@
     opacity: 1;
     visibility: visible;
     transition: opacity 0.5s ease, visibility 0.5s ease;
-    overflow-y: auto; /* Allow scrolling for the entire overlay */
-    padding-top: 120px; /* Push content below the menu */
-    padding-bottom: 20px; /* Add padding at the bottom */
+    overflow-y: auto; /* ✅ Allow scrolling for the entire overlay */
+    padding-top: 80px; /* ✅ Push content below the menu */
+    padding-bottom: 20px; /* ✅ Prevent content from sticking to the bottom */
+    scroll-behavior: smooth; /* ✅ Smooth scrolling */
 }
 
-.overlay.fade-out {
-    opacity: 0;
-    visibility: hidden;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Overlay Content */
+/* ✅ Overlay Content (Limit Height & Prevent Bottom Cut-off) */
 .overlay-content {
     background: linear-gradient(135deg, #9aa4ff, #c4fad1);
     padding: 30px;
     border-radius: 16px;
-    max-width: 600px; /* Maximum width */
+    max-width: 600px;
     width: 80%;
-    max-height: calc(100vh - 140px); /* Subtract padding to keep within viewport */
+    max-height: 80vh; /* ✅ Ensure it doesn't take full screen */
     text-align: right;
-    direction: rtl; /* Right-to-left for Hebrew */
+    direction: rtl;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     position: relative;
     z-index: 1001;
-    overflow-y: auto; /* Enable scrolling inside content */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
-    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    overflow-y: auto; /* ✅ Enable smooth scrolling inside */
+    -webkit-overflow-scrolling: touch; /* ✅ Smooth scrolling on touch devices */
+    scrollbar-width: none; /* ✅ Hide scrollbar for Firefox */
 }
 
+/* ✅ Hide Scrollbar for WebKit (Chrome, Safari) */
 .overlay-content::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for WebKit browsers */
+    display: none;
 }
 
-/* Text Styling */
+/* 🌟 Title Styling */
 h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #fff;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    text-align: center;
 }
 
-p {
-    font-size: 1.2rem;
-    color: #f5f5f5;
-    margin-top: 10px;
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
-    line-height: 1.8;
-}
-
-/* Close Button */
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #4c9daf;
-    border: none;
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 50%;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.close-btn:hover {
-    background: #388e70;
-    transform: scale(1.2);
-    box-shadow: 0 0 15px rgba(108, 142, 56, 0.8);
-}
-
-/* Active Overlay */
-.overlay-active {
-    display: flex;
-}
-
-/* Text Styling */
-h3 {
-    font-size: 1.5rem;
-    color: #4caf50;
-    margin-bottom: 10px;
-    text-align: right;
-}
-
+/* ✅ Smooth Scroll for Text */
 p, li {
     font-size: 1rem;
     line-height: 1.8;
@@ -111,7 +59,12 @@ p, li {
     text-align: right;
 }
 
-/* Nested Lists Styling */
+/* ✅ Active Overlay */
+.overlay-active {
+    display: flex;
+}
+
+/* ✅ Smooth Nested Lists */
 ul {
     list-style: disc;
     padding-right: 20px;
@@ -121,4 +74,19 @@ ul {
 ul ul {
     list-style: circle;
     padding-right: 30px;
+}
+
+/* ✅ Mobile Adjustments */
+@media screen and (max-width: 768px) {
+    .overlay-content {
+        max-width: 90%;
+        width: 85%;
+        padding: 20px;
+        max-height: 70vh; /* ✅ Ensure it doesn’t get cut off */
+    }
+
+    .close-btn {
+        font-size: 1.6rem;
+        right: 10px;
+    }
 }
