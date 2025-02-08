@@ -9,6 +9,8 @@ function SubmitForm() {
         goals: "",
     });
 
+    const [showSuccess, setShowSuccess] = useState(false); // ✅ Success message state
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -18,7 +20,6 @@ function SubmitForm() {
     };
 
     const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzaHmyzofnkHt_m_qnXrfM49wR5DOnxLVTv2prso6cUsb1pZVQGcSIJSMjfyzvhPFOp/exec";
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,14 +31,15 @@ function SubmitForm() {
             },
             mode: "no-cors",
             body: JSON.stringify(formData),
-        })
-        // ✅ Show success message immediately, without checking response
-        alert("Form submitted successfully!");
+        });
+
+        // ✅ Show success message
+        setShowSuccess(true);
+        setTimeout(() => setShowSuccess(false), 3000); // ✅ Hide after 3 seconds
 
         // ✅ Clear form fields
         setFormData({ name: "", email: "", phone: "", goals: "" });
     };
-
 
     // Spin transition effect on background change
     useEffect(() => {
@@ -100,10 +102,13 @@ function SubmitForm() {
                             placeholder="מהן המטרות שלך בתכנית?"
                             rows="4"
                         />
-                        <button type="שלח">Submit</button>
+                        <button type="submit">Submit</button>
                     </form>
                 </div>
             </section>
+
+            {/* ✅ Success message */}
+            {showSuccess && <div className="success-message show">✅ הטופס נשלח בהצלחה!</div>}
         </>
     );
 }
