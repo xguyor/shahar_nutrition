@@ -34,7 +34,7 @@
     max-height: 80vh;
     text-align: right;
     direction: rtl;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 20px rgb(2, 1, 0);
     z-index: 1001;
     overflow-y: auto; /* ✅ Allows scrolling inside */
     -webkit-overflow-scrolling: touch;
