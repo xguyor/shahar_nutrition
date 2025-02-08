@@ -43,9 +43,11 @@
     align-items: center;
 }
 
+/*circly font*/
 .nav-links a {
     color: #020100;
     font-size: 1.2rem;
+    font-family: 'Cinzel', serif;
     text-decoration: none;
     padding: 10px 20px;
     position: relative;
@@ -122,8 +124,4 @@
         display: flex;
     }
 
-    .nav-links a {
-        padding: 10px;
-        font-size: 1.2rem;
-    }
 }

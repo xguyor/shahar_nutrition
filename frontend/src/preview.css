@@ -1,62 +1,120 @@
+/* 🌟 Modal Overlay (Background) */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7); /* Dark overlay */
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
     z-index: 1000;
-}
-
-.modal-content {
-    background: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    max-width: 500px;
-    width: 90%;
     animation: fadeIn 0.5s ease-out;
 }
 
+/* 🌟 Modal Content (Glassmorphism Effect) */
+.modal-content {
+    background: rgba(255, 255, 255, 0.15); /* Glass effect */
+    backdrop-filter: blur(15px);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+    animation: scaleUp 0.4s ease-out;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+
+    /* ✅ Ensure Centered Text */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 🌟 Modal Heading */
 .modal-content h1 {
-    margin-bottom: 20px;
-    font-size: 2.5rem;
-    color: #333;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 12px;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.3);
+    direction: rtl;
 }
 
+/* 🌟 Modal Text */
 .modal-content p {
-    margin-bottom: 30px;
-    font-size: 1.2rem;
-    color: #555;
-}
-
-.enter-btn {
-    background: #007bff;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
     font-size: 1rem;
+    color: #f0f0f0;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    text-align: center; /* ✅ Ensures text stays centered */
+    direction: rtl;
+}
+
+/* 🌟 Enter Button */
+.enter-btn {
+    background: linear-gradient(45deg, #c4fad1, #30651d);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: transform 0.2s ease, background 0.3s ease;
+    box-shadow: 0px 4px 15px rgba(255, 165, 0, 0.5);
+    text-align: center;
+    direction: rtl;
 }
 
+/* 🌟 Button Hover Effect */
 .enter-btn:hover {
-    background: #0056b3;
+    transform: scale(1.05);
 }
 
+/* ✨ Fade In Animation */
 @keyframes fadeIn {
     from {
-        transform: translateY(-30px);
         opacity: 0;
     }
     to {
-        transform: translateY(0);
         opacity: 1;
+    }
+}
+
+/* ✨ Scale Up Animation */
+@keyframes scaleUp {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ✅ Mobile Optimization */
+@media screen and (max-width: 500px) {
+    .modal-content {
+        max-width: 90%;
+        width: 90%;
+        padding: 20px;
+    }
+
+    .modal-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .modal-content p {
+        font-size: 0.95rem;
+    }
+
+    .enter-btn {
+        font-size: 1rem;
+        padding: 10px 22px;
     }
 }

@@ -1,37 +1,74 @@
+/* 🌟 Global Styles */
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Rubik', 'Assistant', 'Varela Round', sans-serif;
     color: #333;
     background-color: #f4f4f9;
+
+    /* ✅ Fix: Apply RTL only to content (not navbar) */
+    direction: rtl;
+    text-align: right;
+    padding-top: 60px; /* Ensures content isn't hidden under the navbar */
+
+    /* ✅ Fix Background Image Scaling */
     background: url("../images/main_background.jpg") no-repeat center center fixed;
-    background-size: 150%; /* Increase value for zoom out, decrease for zoom in */
+    background-size: cover;
 }
 
+/* ✅ Exclude Navbar from RTL */
+.navbar {
+    direction: ltr;
+    text-align: left;
+}
+
+/* 🌟 App Container */
 .App {
     text-align: center;
 }
 
+/* 🌟 Hero Section */
 .hero {
-    height: 60vh;
+    height: 70vh; /* ✅ Increased height for better layout */
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
     position: relative;
+    text-align: center;
 }
 
+/* ✅ Improved Overlay */
 .hero .overlay {
     background-color: rgba(0, 0, 0, 0.6);
-    padding: 30px 40px;
+    padding: 25px 30px;
     border-radius: 15px;
+    max-width: 90%;
 }
 
+/* 🌟 Main Content */
 main {
-    padding: 40px 20px;
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: auto;
 }
 
-body {
-    padding-top: 60px;  /* Ensure content doesn't get hidden under the fixed nav */
+/* ✅ Fix for Mobile */
+@media screen and (max-width: 768px) {
+    body {
+        background-size: 180%; /* ✅ Ensures better fit on small screens */
+    }
+
+    .hero {
+        height: 50vh;
+        padding: 10px;
+    }
+
+    .hero .overlay {
+        padding: 20px;
+        font-size: 1rem;
+    }
+
+    main {
+        padding: 30px 15px;
+    }
 }
-
-

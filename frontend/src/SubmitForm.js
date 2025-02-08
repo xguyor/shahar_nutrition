@@ -97,10 +97,10 @@ function SubmitForm() {
                             name="goals"
                             value={formData.goals}
                             onChange={handleChange}
-                            placeholder="?מה הן המטרות שלך בתכנית"
+                            placeholder="מהן המטרות שלך בתכנית?"
                             rows="4"
                         />
-                        <button type="submit">Submit</button>
+                        <button type="שלח">Submit</button>
                     </form>
                 </div>
             </section>
