@@ -17,7 +17,7 @@ function SubmitForm() {
         }));
     };
 
-    const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbyE_Joa4V8OtCcd5XDtBCwQTo6XQZSFS7lztzvcsQ_BVT625nd0-fs1cv6bHWmeyv0f/exec";
+    const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbxaboNwPmd8hqYyHiyEiqNC4sFim65jg4-9ootxR0fRTNLnpgxWNwm5PomdBFmr9mkZ/exec";
 
 
     const handleSubmit = (e) => {
