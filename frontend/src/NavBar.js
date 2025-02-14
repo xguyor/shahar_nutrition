@@ -10,7 +10,7 @@ function NavBar() {
     const [aboutOpen, setAboutOpen] = useState(false);
     const [recipesOpen, setRecipesOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const [newsletterOpen, setNewsletterOpen] = useState(false); // State to toggle newsletter form
+    const [newsletterOpen, setNewsletterOpen] = useState(false);
 
     const navRef = useRef(null);
 
@@ -32,13 +32,19 @@ function NavBar() {
         setMenuOpen(false);
     };
 
+
+    const openNewsletter = (event) => {
+        event.preventDefault();
+        setRecipesOpen(false);
+        setAboutOpen(false);
+        setMenuOpen(false);
+        setNewsletterOpen(true);
+    };
+
     const closeOverlays = () => {
         setAboutOpen(false);
         setRecipesOpen(false);
-    };
-
-    const toggleNewsletter = () => {
-        setNewsletterOpen(!newsletterOpen); // Toggle the visibility of the newsletter form
+        setNewsletterOpen(false);
     };
 
     useEffect(() => {
@@ -74,7 +80,7 @@ function NavBar() {
                     <div className={`nav-links ${menuOpen ? "active" : ""}`}>
                         <a href="#about" onClick={openAbout}>📖 אודות</a>
                         <a href="#recipes" onClick={openRecipes}>😋 מתכונים</a>
-                        <a href="#newsletter" onClick={toggleNewsletter}>📝 ידיעון שבועי</a> {/* Link to toggle the newsletter form */}
+                        <a href="#newsletter" onClick={openNewsletter}>📝 ידיעון שבועי</a> {/* Link to toggle the newsletter form */}
                     </div>
 
                     <div className="menu-icon" onClick={toggleMenu}>
@@ -85,13 +91,7 @@ function NavBar() {
 
             {aboutOpen && <About closeOverlay={closeOverlays} />}
             {recipesOpen && <Recipes closeOverlay={closeOverlays} />}
-
-            {/* Conditionally render the NewsletterSignup form */}
-            {newsletterOpen && (
-                <div className="newsletter-container">
-                    <NewsLetterSignup /> {/* Render the newsletter form here */}
-                </div>
-            )}
+            {newsletterOpen && <NewsLetterSignup closeOverlay={closeOverlays} />}
         </>
     );
 }

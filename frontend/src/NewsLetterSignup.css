@@ -5,7 +5,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.90); /* ✅ Darker Transparent Background */
+    background: rgba(0, 0, 0, 0.85); /* ✅ Even Darker Transparent Background */
     display: flex;
     align-items: center;
     justify-content: center; /* ✅ Perfect Centering */
@@ -16,113 +16,129 @@
 /* 📌 Newsletter Signup Box */
 .newsletter-signup {
     background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     text-align: center;
-    max-width: 400px;
+    max-width: 420px;
     width: 90%;
-    max-height: 80vh; /* ✅ Prevents Overflow */
+    max-height: 85vh; /* ✅ Prevents Overflow */
     overflow-y: auto;
-    animation: fadeIn 0.4s ease-out;
+    animation: slideIn 0.4s ease-out;
     position: relative;
 }
 
-/* ✅ Close on Click Outside */
-.newsletter-overlay:has(.newsletter-signup):hover {
-    cursor: pointer;
-}
-
-.newsletter-signup:hover {
-    cursor: default;
-}
-
-/* ❌ Prevents Scrolling When Modal is Open */
-body.modal-open {
-    overflow: hidden;
+/* ✅ Title */
+.newsletter-signup h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
 }
 
 /* ✅ Close Button */
 .close-btn {
     position: absolute;
-    top: 10px;
+    top: 12px;
     right: 15px;
     background: none;
     border: none;
     font-size: 1.8rem;
     cursor: pointer;
-    color: #333;
+    color: #555;
     transition: color 0.3s ease;
 }
 
 .close-btn:hover {
-    color: #ff5722;
+    color: #ff4d4d;
 }
 
-/* ✨ Input Field */
-.email-input {
-    width: 100%;
+/* ✅ Centering the Input Fields */
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* ✅ Centers the inputs */
+    gap: 12px; /* ✅ Spacing between inputs */
+}
+
+.newsletter-form input {
+    width: 80%; /* ✅ Make it narrower and centered */
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
     border-radius: 8px;
     font-size: 16px;
-    transition: border-color 0.3s;
+    transition: all 0.3s ease;
+    text-align: center;
 }
 
-.email-input:focus {
+.newsletter-form input:focus {
     border-color: #007bff;
+    box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.3);
     outline: none;
 }
 
 /* 🎯 Subscribe Button */
 .submit-btn {
-    background: #007bff;
+    background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
     border: none;
     padding: 12px;
     border-radius: 8px;
     font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s;
-    width: 100%;
+    transition: background 0.3s, transform 0.2s;
+    width: 80%; /* ✅ Align with inputs */
 }
 
 .submit-btn:hover {
-    background: #0056b3;
+    background: linear-gradient(135deg, #0056b3, #00408a);
+    transform: translateY(-2px);
 }
 
 /* ✅ Success & Error Messages */
 .success-message {
     color: #28a745;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 .error-message {
     color: #dc3545;
     font-size: 14px;
+    margin-top: 5px;
 }
 
-/* 🎭 Fade-in Animation */
-@keyframes fadeIn {
+/* 🎭 Slide-in Animation */
+@keyframes slideIn {
     from {
         opacity: 0;
-        transform: scale(0.9);
+        transform: translateY(-20px);
     }
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0);
     }
+}
+
+/* ✅ Close Modal on Click Outside */
+.newsletter-overlay.active {
+    cursor: pointer;
+}
+
+.newsletter-signup {
+    cursor: default;
 }
 
 /* 📱 Mobile Adjustments */
 @media screen and (max-width: 768px) {
     .newsletter-signup {
-        max-width: 90%;
-        padding: 20px;
+        max-width: 95%;
+        padding: 25px;
     }
 
-    .close-btn {
-        font-size: 1.6rem;
-        right: 10px;
+    .newsletter-form input,
+    .submit-btn {
+        width: 90%; /* ✅ Better fit on mobile */
     }
 }

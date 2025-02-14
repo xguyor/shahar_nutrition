@@ -1,30 +1,73 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./NewsLetterSignup.css";
 
-const NewsLetterSignup = () => {
-    const [email, setEmail] = useState('');
+const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzaHmyzofnkHt_m_qnXrfM49wR5DOnxLVTv2prso6cUsb1pZVQGcSIJSMjfyzvhPFOp/exec";
+
+const NewsLetterSignup = ({ closeOverlay }) => {
+    const [formData, setFormData] = useState({
+        firstName: "",
+        email: "",
+        lastName: "",
+        goals: "Sign to newsletter",
+    });
+
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [error, setError] = useState('');
+    const [error, setError] = useState("");
+    const overlayRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (isSubmitted) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
-        return () => {
-            document.body.style.overflow = "auto";
+        const handleClickOutside = (event) => {
+            if (overlayRef.current && !overlayRef.current.contains(event.target)) {
+                if (closeOverlay) {
+                    closeOverlay();  // ✅ Close the modal if from navbar
+                } else {
+                    navigate("/");  // ✅ Navigate home if accessed via /newsletter
+                }
+            }
         };
-    }, [isSubmitted]);
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [closeOverlay, navigate]);
+
+
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (validateEmail(email)) {
+        if (validateEmail(formData.email)) {
+            fetch(GOOGLE_SHEET_API_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                mode: "no-cors",
+                body: JSON.stringify(formData),
+            });
+
             setIsSubmitted(true);
-            setError('');
-            console.log('Email submitted:', email);
+            setError("");
+            console.log("Email submitted:", formData.email);
+
+            setFormData({ firstName: "", email: "", lastName: "", goals: "Sign to newsletter" });
+
+            // ✅ Close the modal after submission (Optional)
+            setTimeout(() => {
+                closeOverlay();
+            }, 3000);
         } else {
-            setError('Please enter a valid email address');
+            setError("Please enter a valid email address");
         }
     };
 
@@ -35,18 +78,26 @@ const NewsLetterSignup = () => {
 
     return (
         <div className="newsletter-overlay">
-            <div className="newsletter-signup">
+            <div ref={overlayRef} className="newsletter-signup">
                 <h2>Sign up for our Newsletter</h2>
                 {isSubmitted ? (
                     <p className="success-message">Thank you for signing up!</p>
                 ) : (
                     <form onSubmit={handleSubmit} className="newsletter-form">
                         <input
+                            type="text"
+                            name="firstName"
+                            placeholder="First Name"
+                            value={formData.firstName}
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
                             type="email"
+                            name="email"
                             placeholder="Enter your email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="email-input"
+                            value={formData.email}
+                            onChange={handleChange}
                             required
                         />
                         <button type="submit" className="submit-btn">
