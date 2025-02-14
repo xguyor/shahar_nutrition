@@ -11,27 +11,43 @@
     justify-content: center;
     backdrop-filter: blur(12px);
     z-index: 1000;
-    animation: fadeIn 0.5s ease-out;
 }
 
-/* 🌟 Modal Content (Glassmorphism Effect) */
+/* 🌟 Modal Content (Instant Centering Fix) */
 .modal-content {
-    background: rgba(255, 255, 255, 0.15); /* Glass effect */
+    position: absolute; /* ✅ Ensures it's independent */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* ✅ Perfectly centered */
+
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(15px);
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
     max-width: 400px;
     width: 90%;
-    animation: scaleUp 0.4s ease-out;
     border: 2px solid rgba(255, 255, 255, 0.2);
-
-    /* ✅ Ensure Centered Text */
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    opacity: 0; /* ✅ Prevents flickering */
+    animation: fadeInScale 0.3s ease-out forwards;
+}
+
+/* ✅ Fix: Fade-in without shifting */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9); /* ✅ Start at center but slightly smaller */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1); /* ✅ Ends at center */
+    }
 }
 
 /* 🌟 Modal Heading */
@@ -50,7 +66,7 @@
     color: #f0f0f0;
     margin-bottom: 20px;
     line-height: 1.5;
-    text-align: center; /* ✅ Ensures text stays centered */
+    text-align: center;
     direction: rtl;
 }
 
@@ -73,28 +89,6 @@
 /* 🌟 Button Hover Effect */
 .enter-btn:hover {
     transform: scale(1.05);
-}
-
-/* ✨ Fade In Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* ✨ Scale Up Animation */
-@keyframes scaleUp {
-    from {
-        transform: scale(0.85);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
 }
 
 /* ✅ Mobile Optimization */
