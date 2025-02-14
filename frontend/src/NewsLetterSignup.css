@@ -1,0 +1,128 @@
+/* 🌟 Darker Overlay - Ensures It Floats on Top */
+.newsletter-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.90); /* ✅ Darker Transparent Background */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* ✅ Perfect Centering */
+    z-index: 10000; /* ✅ Ensures it's on top */
+    overflow: hidden;
+}
+
+/* 📌 Newsletter Signup Box */
+.newsletter-signup {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    max-height: 80vh; /* ✅ Prevents Overflow */
+    overflow-y: auto;
+    animation: fadeIn 0.4s ease-out;
+    position: relative;
+}
+
+/* ✅ Close on Click Outside */
+.newsletter-overlay:has(.newsletter-signup):hover {
+    cursor: pointer;
+}
+
+.newsletter-signup:hover {
+    cursor: default;
+}
+
+/* ❌ Prevents Scrolling When Modal is Open */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* ✅ Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #ff5722;
+}
+
+/* ✨ Input Field */
+.email-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.email-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* 🎯 Subscribe Button */
+.submit-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background: #0056b3;
+}
+
+/* ✅ Success & Error Messages */
+.success-message {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+}
+
+/* 🎭 Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 📱 Mobile Adjustments */
+@media screen and (max-width: 768px) {
+    .newsletter-signup {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    .close-btn {
+        font-size: 1.6rem;
+        right: 10px;
+    }
+}
