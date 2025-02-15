@@ -1,4 +1,4 @@
-/* 🌟 Recipe Overlay - Prevents Background Scroll */
+/* 🌟 Recipe Overlay */
 .recipe-overlay {
     position: fixed;
     top: 0;
@@ -11,107 +11,137 @@
     justify-content: center;
     z-index: 1000;
     padding: 20px;
-    overflow: hidden; /* ✅ Prevents background scroll */
+    overflow-x: hidden;
 }
 
-/* 📌 Recipe Content Box */
+/* 📌 Recipe Content Box - Now Scrollable */
 .recipe-content {
     background: white;
-    padding: 40px;
-    border-radius: 20px;
+    padding: 25px;
+    border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     text-align: center;
-    max-width: 800px;
-    width: 90%;
-    max-height: 85vh;
-    overflow-y: auto; /* ✅ Ensures scrolling inside */
+    max-width: 450px; /* ✅ Smaller Box */
+    width: 85%;
+    max-height: 80vh; /* ✅ Adjust for scrolling */
+    overflow-y: auto; /* ✅ Allows scrolling inside */
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in-out;
 }
 
-/* ✅ Prevents Scrolling Background */
-body.modal-open {
-    overflow: hidden;
+/* ✅ Title & Close Button */
+.recipe-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 
-/* ✅ Title Styling */
 .recipe-content h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: #007bff;
-    margin-bottom: 15px;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    flex-grow: 1;
+    text-align: center;
 }
 
-/* ✅ Scrollable Description (Hidden Scrollbar) */
-.recipe-text {
-    font-size: 1.2rem;
-    color: #333;
-    margin-bottom: 20px;
-    line-height: 1.6;
-    max-height: 150px; /* ✅ Limit text height */
-    overflow-y: auto;
-    text-overflow: ellipsis;
-    cursor: pointer;
-    padding-right: 10px;
-    transition: max-height 0.3s ease-in-out;
-    scrollbar-width: none; /* ✅ Hide scrollbar for Firefox */
-}
-
-.recipe-text::-webkit-scrollbar {
-    display: none; /* ✅ Hide scrollbar for Chrome, Safari */
-}
-
-/* ✅ Expand Description on Click */
-.recipe-text.expanded {
-    max-height: none;
-    overflow: visible;
-}
-
-/* 🎥 Video Container */
-.video-container {
-    width: 100%;
-    max-width: 700px;
-    margin: auto;
-    position: relative;
-}
-
-/* ✅ Close Button */
+/* ✅ Close Button - Small & Clean */
 .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
     background: none;
     border: none;
-    font-size: 2rem;
+    font-size: 1.2rem;
     cursor: pointer;
-    color: #555;
+    color: #888;
     transition: color 0.3s ease;
+    padding: 5px;
+    margin-left: 8px;
 }
 
 .close-btn:hover {
     color: #ff4d4d;
 }
 
+/* ✅ Scrollable Text (No Shadow) */
+.recipe-text {
+    font-size: 1.4rem;
+    color: #333;
+    max-height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-shadow: none !important; /* ✅ Remove text shadow */
+    cursor: pointer;
+    transition: max-height 0.3s ease-in-out;
+}
+
+/* ✅ Expand Text on Click - No Background, No Shadow */
+.recipe-text.expanded {
+    max-height: 300px;
+    font-size: 1rem;
+    overflow-y: auto;
+    white-space: normal;
+    padding: 0;
+    background: none; /* ✅ Removed Background */
+    border-radius: 0;
+    text-shadow: none !important; /* ✅ Remove text shadow */
+}
+
+/* ✅ Remove scrollbar from text */
+.recipe-text.expanded::-webkit-scrollbar {
+    display: none;
+}
+
+/* 🎥 Video Container */
+.video-container {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    position: relative;
+}
+
+/* 📌 Instagram Video Embedded */
+.video-container iframe {
+    width: 100%;
+    height: 280px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ Make entire component scrollable */
+.recipe-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.recipe-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.recipe-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
 /* ✅ Mobile Adjustments */
 @media screen and (max-width: 768px) {
     .recipe-content {
-        max-width: 95%;
+        max-width: 90%;
         width: 90%;
-        padding: 25px;
-    }
-
-    .recipe-content h2 {
-        font-size: 1.8rem;
+        padding: 20px;
     }
 
     .recipe-text {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
     }
 
-    .video-container {
-        max-width: 90%;
+    .recipe-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .video-container iframe {
+        height: 250px;
     }
 }
