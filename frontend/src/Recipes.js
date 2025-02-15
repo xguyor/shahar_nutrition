@@ -5,7 +5,22 @@ import "./Recipes.css";
 const recipeList = [
     {
         title: "🥩 מתכון 1",
-        description: "מתכון לבשר טעים",
+        description: "🥘 מתכון קל וטעים: דלורית ממולאת בבשר וטחינה\n" +
+            "מצרכים:\n" +
+            "🎃 דלורית אחת (בינונית)\n" +
+            "🥩 200 גרם בשר טחון\n" +
+            "🥄 1/2 כף טחינה גולמית\n" +
+            "🍋 חצי לימון סחוט\n" +
+            "🧂 מלח לפי הטעם\n" +
+            "🥫 רוטב עגבניות ( לשיפור)\n" +
+            "אופן הכנה:\n" +
+            "🔪 חותכים את הדלורית לחצי ומנקים מגרעינים.\n" +
+            "🔥 מכניסים לתנור על 230°C לכ-40 דקות, עד שהיא מתרככת.\n" +
+            "🍳 במחבת חמה, מטגנים את הבשר הטחון עד שהוא שחום ( אני הוספתי רוטב עגבניות 🥫) .\n" +
+            "🥣 מערבבים טחינה עם מיץ לימון ומלח לקבלת רוטב חלק.\n" +
+            "🥄 ממלאים את הדלורית הרכה בבשר ומזלפים מעל את הטחינה.\n" +
+            "\n" +
+            "😋 בתיאבון!",
         videoUrl: "https://www.instagram.com/p/DFvPB1PIbcR/"
     },
     {

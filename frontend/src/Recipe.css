@@ -1,70 +1,81 @@
-/* 🌟 Recipe Overlay - Background */
+/* 🌟 Recipe Overlay - Prevents Background Scroll */
 .recipe-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* ✅ Dark Transparent Background */
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
-    justify-content: center; /* ✅ Ensures Perfect Centering */
+    justify-content: center;
     z-index: 1000;
     padding: 20px;
-    overflow-x: hidden; /* ✅ Prevents Horizontal Scrolling Issues */
+    overflow: hidden; /* ✅ Prevents background scroll */
 }
 
-/* 📌 Recipe Content Box - Bigger & More Spacing */
+/* 📌 Recipe Content Box */
 .recipe-content {
     background: white;
     padding: 40px;
-    border-radius: 15px;
+    border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     text-align: center;
-    max-width: 750px; /* ⬆️ Increased Width */
+    max-width: 800px;
     width: 90%;
-    max-height: 90vh; /* ⬆️ Increased Height */
-    overflow-y: auto;
-    animation: fadeIn 0.4s ease-out;
+    max-height: 85vh;
+    overflow-y: auto; /* ✅ Ensures scrolling inside */
     position: fixed;
-
-    /* ✅ FINAL FIX: Always Center from the Start */
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
 
+/* ✅ Prevents Scrolling Background */
+body.modal-open {
+    overflow: hidden;
+}
+
 /* ✅ Title Styling */
 .recipe-content h2 {
-    font-size: 2rem; /* ⬆️ Larger Font */
+    font-size: 2rem;
     font-weight: bold;
     color: #007bff;
     margin-bottom: 15px;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* ✅ Description Styling */
-.recipe-content p {
-    font-size: 1.3rem; /* ⬆️ Larger Font */
+/* ✅ Scrollable Description (Hidden Scrollbar) */
+.recipe-text {
+    font-size: 1.2rem;
     color: #333;
     margin-bottom: 20px;
-    line-height: 1.6; /* ⬆️ Better Readability */
+    line-height: 1.6;
+    max-height: 150px; /* ✅ Limit text height */
+    overflow-y: auto;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    padding-right: 10px;
+    transition: max-height 0.3s ease-in-out;
+    scrollbar-width: none; /* ✅ Hide scrollbar for Firefox */
 }
 
-/* 🎥 Video Container - Bigger Video */
+.recipe-text::-webkit-scrollbar {
+    display: none; /* ✅ Hide scrollbar for Chrome, Safari */
+}
+
+/* ✅ Expand Description on Click */
+.recipe-text.expanded {
+    max-height: none;
+    overflow: visible;
+}
+
+/* 🎥 Video Container */
 .video-container {
     width: 100%;
-    max-width: 700px; /* ⬆️ Increased Max Width */
+    max-width: 700px;
     margin: auto;
     position: relative;
-}
-
-/* 📌 Embedded Video */
-.video-container iframe {
-    width: 100%;
-    height: 400px; /* ⬆️ Increased Height */
-    border-radius: 15px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* ✅ Close Button */
@@ -84,18 +95,6 @@
     color: #ff4d4d;
 }
 
-/* 🎭 Fade-in Animation */
-@keyframes fadeIn {
-    from {
-        transform: translate(-50%, -55%);
-        opacity: 0;
-    }
-    to {
-        transform: translate(-50%, -50%);
-        opacity: 1;
-    }
-}
-
 /* ✅ Mobile Adjustments */
 @media screen and (max-width: 768px) {
     .recipe-content {
@@ -108,11 +107,11 @@
         font-size: 1.8rem;
     }
 
-    .recipe-content p {
-        font-size: 1.2rem;
+    .recipe-text {
+        font-size: 1.1rem;
     }
 
-    .video-container iframe {
-        height: 280px; /* ⬇️ Adjusted for Mobile */
+    .video-container {
+        max-width: 90%;
     }
 }
