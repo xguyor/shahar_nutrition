@@ -5,85 +5,76 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.6); /* ✅ Dark Transparent Background */
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* ✅ Ensures Perfect Centering */
     z-index: 1000;
-    backdrop-filter: blur(10px);
-    animation: fadeIn 0.3s ease-out;
+    padding: 20px;
+    overflow-x: hidden; /* ✅ Prevents Horizontal Scrolling Issues */
 }
 
-/* 📌 Recipe Content Box */
+/* 📌 Recipe Content Box - Bigger & More Spacing */
 .recipe-content {
     background: white;
-    padding: 30px;
+    padding: 40px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     text-align: center;
-    max-width: 500px;
+    max-width: 750px; /* ⬆️ Increased Width */
     width: 90%;
-    max-height: 80vh;
+    max-height: 90vh; /* ⬆️ Increased Height */
     overflow-y: auto;
+    animation: fadeIn 0.4s ease-out;
     position: fixed;
 
-    /* ✅ Centering Fix */
+    /* ✅ FINAL FIX: Always Center from the Start */
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    opacity: 1;
-    animation: fadeInScale 0.3s ease-out;
-}
-
-/* ✅ Smooth Appear Animation */
-@keyframes fadeInScale {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.9);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
 }
 
 /* ✅ Title Styling */
 .recipe-content h2 {
-    font-size: 1.8rem;
+    font-size: 2rem; /* ⬆️ Larger Font */
+    font-weight: bold;
     color: #007bff;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* ✅ Description Styling */
 .recipe-content p {
-    font-size: 1.1rem;
+    font-size: 1.3rem; /* ⬆️ Larger Font */
     color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    line-height: 1.6; /* ⬆️ Better Readability */
 }
 
-/* 🎥 Video Container */
+/* 🎥 Video Container - Bigger Video */
 .video-container {
     width: 100%;
+    max-width: 700px; /* ⬆️ Increased Max Width */
+    margin: auto;
     position: relative;
 }
 
 /* 📌 Embedded Video */
 .video-container iframe {
     width: 100%;
-    height: 300px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    height: 400px; /* ⬆️ Increased Height */
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* ✅ Close Button */
 .close-btn {
     position: absolute;
-    top: 12px;
-    right: 15px;
+    top: 15px;
+    right: 20px;
     background: none;
     border: none;
-    font-size: 1.8rem;
+    font-size: 2rem;
     cursor: pointer;
     color: #555;
     transition: color 0.3s ease;
@@ -93,14 +84,35 @@
     color: #ff4d4d;
 }
 
+/* 🎭 Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        transform: translate(-50%, -55%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
 /* ✅ Mobile Adjustments */
 @media screen and (max-width: 768px) {
     .recipe-content {
         max-width: 95%;
+        width: 90%;
         padding: 25px;
     }
 
+    .recipe-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .recipe-content p {
+        font-size: 1.2rem;
+    }
+
     .video-container iframe {
-        height: 250px;
+        height: 280px; /* ⬇️ Adjusted for Mobile */
     }
 }

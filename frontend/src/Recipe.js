@@ -1,16 +1,26 @@
 import React, { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Recipe.css";
 
-function Recipe({ title, description, videoUrl, closeOverlay }) {
+function Recipe() {
     const overlayRef = useRef(null);
-    const navigate = useNavigate(); // ✅ Initialize navigation
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    // ✅ Close overlay when clicking outside the content
+    const recipe = location.state?.recipe; // ✅ Get recipe from navigation state
+
+    // ✅ Redirect if no recipe found
+    useEffect(() => {
+        if (!recipe) {
+            navigate("/recipes");
+        }
+    }, [recipe, navigate]);
+
+    // ✅ Close overlay when clicking outside
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (overlayRef.current && !overlayRef.current.contains(event.target)) {
-                navigate("/recipes"); // ✅ Navigate back instead of closing everything
+                navigate("/recipes"); // ✅ Go back to Recipes
             }
         };
 
@@ -20,18 +30,42 @@ function Recipe({ title, description, videoUrl, closeOverlay }) {
         };
     }, [navigate]);
 
+    // ✅ Load Instagram embed script dynamically
+    useEffect(() => {
+        if (!window.instgrm) {
+            const script = document.createElement("script");
+            script.async = true;
+            script.src = "https://www.instagram.com/embed.js";
+            document.body.appendChild(script);
+
+            script.onload = () => {
+                if (window.instgrm) {
+                    window.instgrm.Embeds.process();
+                }
+            };
+        } else {
+            window.instgrm.Embeds.process();
+        }
+    }, []);
+
+    // ✅ Show error if recipe is missing
+    if (!recipe) {
+        return <div className="error-message">❌ מתכון לא נמצא!</div>;
+    }
+
     return (
         <div className="recipe-overlay">
             <div ref={overlayRef} className="recipe-content">
-                <h2>{title}</h2>
-                <p>{description}</p>
+                <h2>{recipe.title}</h2>
+                <p>{recipe.description}</p>
+
+                {/* ✅ Instagram Video Embed */}
                 <div className="video-container">
-                    <iframe
-                        src={videoUrl}
-                        title="Recipe Video"
-                        frameBorder="0"
-                        allowFullScreen
-                    ></iframe>
+                    <blockquote
+                        className="instagram-media"
+                        data-instgrm-permalink={recipe.videoUrl}
+                        data-instgrm-version="14"
+                    ></blockquote>
                 </div>
             </div>
         </div>

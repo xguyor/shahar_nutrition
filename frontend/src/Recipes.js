@@ -3,10 +3,26 @@ import { useNavigate } from "react-router-dom";
 import "./Recipes.css";
 
 const recipeList = [
-    { title: "🥩 מתכון 1", description: "מתכון לבשר טעים", videoUrl: "https://www.instagram.com/video1" },
-    { title: "🍳 מתכון 2", description: "מתכון לחביתה בריאה", videoUrl: "https://www.instagram.com/video2" },
-    { title: "🍍 מתכון 3", description: "מתכון לפירות", videoUrl: "https://www.instagram.com/video3" },
-    { title: "🏋️‍♀️ מתכון 4", description: "מתכון לארוחה מאוזנת", videoUrl: "https://www.instagram.com/video4" },
+    {
+        title: "🥩 מתכון 1",
+        description: "מתכון לבשר טעים",
+        videoUrl: "https://www.instagram.com/p/DFvPB1PIbcR/"
+    },
+    {
+        title: "🍳 מתכון 2",
+        description: "מתכון לחביתה בריאה",
+        videoUrl: "https://www.instagram.com/video2"
+    },
+    {
+        title: "🍍 מתכון 3",
+        description: "מתכון לפירות",
+        videoUrl: "https://www.instagram.com/video3"
+    },
+    {
+        title: "🏋️‍♀️ מתכון 4",
+        description: "מתכון לארוחה מאוזנת",
+        videoUrl: "https://www.instagram.com/video4"
+    },
 ];
 
 function Recipes({ closeOverlay }) {
@@ -30,6 +46,7 @@ function Recipes({ closeOverlay }) {
         };
     }, [navigate]);
 
+
     return (
         <div className="recipes-overlay">
             <div ref={overlayRef} className="recipes-content">
@@ -38,7 +55,11 @@ function Recipes({ closeOverlay }) {
 
                 <div className="recipes-grid">
                     {recipeList.map((recipe, index) => (
-                        <div key={index} className="recipe-card" onClick={() => navigate(`/recipes/${index}`)}>
+                        <div
+                            key={index}
+                            className="recipe-card"
+                            onClick={() => navigate(`/recipes/${index}`, { state: { recipe } })}
+                        >
                             {recipe.title}
                         </div>
                     ))}
