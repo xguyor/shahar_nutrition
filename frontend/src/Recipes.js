@@ -21,7 +21,7 @@ function Recipes({ closeOverlay }) {
     return (
         <div className="recipes-overlay">
             <div ref={overlayRef} className="recipes-content">
-                <h2>🍏 מתכונים בריאים 🍽️</h2>
+                <h2>מתכונים בריאים 🍽️</h2>
                 <p>כאן תוכלו למצוא מתכונים טעימים, מזינים וקלים להכנה!</p>
 
                 {/* Placeholder for future recipe cards */}

@@ -1,119 +1,122 @@
-/* 🌟 Darker Overlay - Ensures It Floats on Top */
+/* 🌟 Elegant & Modern Newsletter Overlay */
 .newsletter-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85); /* ✅ Even Darker Transparent Background */
+    background: rgba(0, 0, 0, 0.75);
     display: flex;
     align-items: center;
-    justify-content: center; /* ✅ Perfect Centering */
-    z-index: 10000; /* ✅ Ensures it's on top */
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(15px);
     overflow: hidden;
+    animation: fadeIn 0.4s ease-out;
 }
 
-/* 📌 Newsletter Signup Box */
+/* 📌 Stylish Newsletter Signup Box */
 .newsletter-signup {
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, rgba(115, 97, 97, 0.58), #f8f9fa);
+    padding: 50px;
+    border-radius: 24px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
     text-align: center;
-    max-width: 420px;
+    max-width: 480px;
     width: 90%;
-    max-height: 85vh; /* ✅ Prevents Overflow */
+    max-height: 85vh;
     overflow-y: auto;
     animation: slideIn 0.4s ease-out;
     position: relative;
+    z-index: 10001;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* ✅ Title */
-.newsletter-signup h2 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-/* ✅ Close Button */
-.close-btn {
-    position: absolute;
-    top: 12px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: #555;
-    transition: color 0.3s ease;
-}
-
-.close-btn:hover {
-    color: #ff4d4d;
-}
-
-/* ✅ Centering the Input Fields */
+/* ✅ Improved Form Layout with More Space */
 .newsletter-form {
     display: flex;
     flex-direction: column;
-    align-items: center; /* ✅ Centers the inputs */
-    gap: 12px; /* ✅ Spacing between inputs */
+    align-items: center;
+    gap: 20px;
 }
 
-.newsletter-form input {
-    width: 80%; /* ✅ Make it narrower and centered */
-    padding: 12px;
+/* ✅ Name Fields with Enhanced Styling */
+.name-container {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    justify-content: center;
+}
+
+.name-container input {
+    flex: 1;
+    padding: 16px;
     border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: all 0.3s ease;
+    border-radius: 14px;
+    font-size: 18px;
     text-align: center;
+    transition: all 0.3s ease;
+    background: #f5f5f5;
+}
+
+.name-container input:focus {
+    border-color: #007bff;
+    box-shadow: 0px 0px 15px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+/* ✅ Enhanced Email Input */
+.newsletter-form input {
+    width: 90%;
+    padding: 16px;
+    border: 2px solid #ddd;
+    border-radius: 14px;
+    font-size: 18px;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: #f5f5f5;
 }
 
 .newsletter-form input:focus {
     border-color: #007bff;
-    box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.3);
+    box-shadow: 0px 0px 15px rgba(0, 123, 255, 0.3);
     outline: none;
 }
 
-/* 🎯 Subscribe Button */
+/* ✅ Modern Subscribe Button */
 .submit-btn {
+    width: 90%;
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+    font-size: 20px;
+    font-weight: bold;
     background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    width: 80%; /* ✅ Align with inputs */
+    transition: all 0.3s ease;
+    box-shadow: 0px 6px 25px rgba(0, 123, 255, 0.3);
 }
 
 .submit-btn:hover {
     background: linear-gradient(135deg, #0056b3, #00408a);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
 }
 
-/* ✅ Success & Error Messages */
-.success-message {
-    color: #28a745;
-    font-weight: bold;
-    margin-top: 10px;
+/* ✅ Smooth Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-.error-message {
-    color: #dc3545;
-    font-size: 14px;
-    margin-top: 5px;
-}
-
-/* 🎭 Slide-in Animation */
 @keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-30px);
     }
     to {
         opacity: 1;
@@ -121,24 +124,18 @@
     }
 }
 
-/* ✅ Close Modal on Click Outside */
-.newsletter-overlay.active {
-    cursor: pointer;
-}
-
-.newsletter-signup {
-    cursor: default;
-}
-
-/* 📱 Mobile Adjustments */
+/* ✅ Mobile Adjustments for Better UX */
 @media screen and (max-width: 768px) {
     .newsletter-signup {
         max-width: 95%;
-        padding: 25px;
+        padding: 40px;
     }
-
     .newsletter-form input,
     .submit-btn {
-        width: 90%; /* ✅ Better fit on mobile */
+        width: 95%;
+    }
+    .name-container {
+        flex-direction: column;
+        gap: 14px;
     }
 }

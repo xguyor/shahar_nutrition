@@ -49,3 +49,10 @@ iframe {
 .carousel-btn:hover {
     background: rgba(0, 0, 0, 0.8);
 }
+
+.carousel-container h2 {
+    font-size: 1.9rem;
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+    text-shadow: 4px 4px 15px rgba(0, 0, 0, 1);
+}

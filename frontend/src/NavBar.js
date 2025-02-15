@@ -79,8 +79,8 @@ function NavBar() {
 
                     <div className={`nav-links ${menuOpen ? "active" : ""}`}>
                         <a href="#about" onClick={openAbout}>📖 אודות</a>
-                        <a href="#recipes" onClick={openRecipes}>😋 מתכונים</a>
-                        <a href="#newsletter" onClick={openNewsletter}>📝 ידיעון שבועי</a> {/* Link to toggle the newsletter form */}
+                        <a href="#recipes" onClick={openRecipes}>🍽️ מתכונים</a>
+                        <a href="#newsletter" onClick={openNewsletter}>📩 ידיעון שבועי</a> {/* Link to toggle the newsletter form */}
                     </div>
 
                     <div className="menu-icon" onClick={toggleMenu}>

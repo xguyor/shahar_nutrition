@@ -36,7 +36,7 @@
 
 /* Form Card */
 .form-card {
-    background: rgba(76, 175, 126, 0.7);
+    background: #707b8c;
     padding: 50px;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
@@ -55,7 +55,7 @@
 /* Form Text */
 .form-card h2 {
     font-size: 2rem;
-    color: rgb(12, 11, 11); /* Blue text for "Get Started" heading */
+    color: rgb(255, 255, 255);
     margin-bottom: 10px;
 }
 
@@ -106,8 +106,8 @@
 
 /* Button Styling */
 .customer-form button {
-    background: rgb(2, 1, 0);
-    color: white;
+    background: rgb(255, 255, 255);
+    color: rgba(0, 0, 0, 0.99);
     border: none;
     padding: 16px 50px;
     cursor: pointer;

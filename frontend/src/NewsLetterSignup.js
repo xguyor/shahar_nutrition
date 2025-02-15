@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./NewsLetterSignup.css";
 
-const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzaHmyzofnkHt_m_qnXrfM49wR5DOnxLVTv2prso6cUsb1pZVQGcSIJSMjfyzvhPFOp/exec";
+const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzzFVX8IdjqWJmWdJq_0PR6BJFrfdPCQBWDdaEQo_muxrn_zE02y1rbBIMz0JZpCpQbBw/exec";
 
 const NewsLetterSignup = ({ closeOverlay }) => {
     const [formData, setFormData] = useState({
         firstName: "",
-        email: "",
         lastName: "",
+        email: "",
         goals: "Sign to newsletter",
     });
 
@@ -34,8 +34,6 @@ const NewsLetterSignup = ({ closeOverlay }) => {
         };
     }, [closeOverlay, navigate]);
 
-
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -60,7 +58,7 @@ const NewsLetterSignup = ({ closeOverlay }) => {
             setError("");
             console.log("Email submitted:", formData.email);
 
-            setFormData({ firstName: "", email: "", lastName: "", goals: "Sign to newsletter" });
+            setFormData({ firstName: "", lastName: "", email: "", goals: "Sign to newsletter" });
 
             // ✅ Close the modal after submission (Optional)
             setTimeout(() => {
@@ -79,29 +77,38 @@ const NewsLetterSignup = ({ closeOverlay }) => {
     return (
         <div className="newsletter-overlay">
             <div ref={overlayRef} className="newsletter-signup">
-                <h2>Sign up for our Newsletter</h2>
+                <h2>📝 רישום לידיעון השבועי שלנו</h2>
                 {isSubmitted ? (
-                    <p className="success-message">Thank you for signing up!</p>
+                    <p className="success-message">תודה על ההרשמה! מידע שימושי בדרך אליך!</p>
                 ) : (
                     <form onSubmit={handleSubmit} className="newsletter-form">
-                        <input
-                            type="text"
-                            name="firstName"
-                            placeholder="First Name"
-                            value={formData.firstName}
-                            onChange={handleChange}
-                            required
-                        />
+                        <div className="name-container">
+                            <input
+                                type="text"
+                                name="firstName"
+                                placeholder="שם פרטי"
+                                value={formData.firstName}
+                                onChange={handleChange}
+                                required
+                            />
+                            <input
+                                type="text"
+                                name="lastName"
+                                placeholder="שם משפחה"
+                                value={formData.lastName}
+                                onChange={handleChange}
+                            />
+                        </div>
                         <input
                             type="email"
                             name="email"
-                            placeholder="Enter your email"
+                            placeholder="כתובת אימייל"
                             value={formData.email}
                             onChange={handleChange}
                             required
                         />
                         <button type="submit" className="submit-btn">
-                            Subscribe
+                            לחץ להרשמה!
                         </button>
                         {error && <p className="error-message">{error}</p>}
                     </form>

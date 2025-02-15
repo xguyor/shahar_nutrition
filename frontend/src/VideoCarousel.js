@@ -50,7 +50,7 @@ function VideoCarousel() {
 
     return (
         <div className="carousel-container">
-            <h2>תוכן מיוטיוב 🎥</h2>
+            <h2>תוכן מיוטיוב </h2>
 
             {/* ✅ Show One Video at a Time */}
             {videos.length > 0 && (
@@ -64,8 +64,8 @@ function VideoCarousel() {
                     ></iframe>
 
                     {/* ✅ Previous & Next Buttons */}
-                    <button className="carousel-btn left" onClick={prevVideo}>❮</button>
-                    <button className="carousel-btn right" onClick={nextVideo}>❯</button>
+                    <button className="carousel-btn left" onClick={nextVideo}>❯</button>
+                    <button className="carousel-btn right" onClick={prevVideo}>❮</button>
                 </div>
             )}
         </div>
