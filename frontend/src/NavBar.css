@@ -55,7 +55,7 @@
     display: inline-block;
     text-decoration: none;
     font-size: 1.1rem;
-    color: white;
+    color: rgba(161, 228, 255, 0.96);
     padding: 10px 15px;
     border-radius: 8px;
     transition: color 0.3s ease, transform 0.3s ease-in-out;
