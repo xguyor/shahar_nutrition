@@ -1,22 +1,34 @@
 import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Recipes.css";
 
+const recipeList = [
+    { title: "🥩 מתכון 1", description: "מתכון לבשר טעים", videoUrl: "https://www.instagram.com/video1" },
+    { title: "🍳 מתכון 2", description: "מתכון לחביתה בריאה", videoUrl: "https://www.instagram.com/video2" },
+    { title: "🍍 מתכון 3", description: "מתכון לפירות", videoUrl: "https://www.instagram.com/video3" },
+    { title: "🏋️‍♀️ מתכון 4", description: "מתכון לארוחה מאוזנת", videoUrl: "https://www.instagram.com/video4" },
+];
+
 function Recipes({ closeOverlay }) {
+    const navigate = useNavigate();
     const overlayRef = useRef(null);
 
-    // ✅ Close Recipes when clicking outside the content
+    // Close Recipes overlay when clicking outside
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (overlayRef.current && !overlayRef.current.contains(event.target)) {
-                closeOverlay();
+                if (closeOverlay) {
+                    closeOverlay();  // ✅ Close the modal if from navbar
+                } else {
+                    navigate("/");  // ✅ Navigate home if accessed via /newsletter
+                }
             }
         };
-
         document.addEventListener("mousedown", handleClickOutside);
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [closeOverlay]);
+    }, [navigate]);
 
     return (
         <div className="recipes-overlay">
@@ -24,12 +36,12 @@ function Recipes({ closeOverlay }) {
                 <h2>מתכונים בריאים 🍽️</h2>
                 <p>כאן תוכלו למצוא מתכונים טעימים, מזינים וקלים להכנה!</p>
 
-                {/* Placeholder for future recipe cards */}
                 <div className="recipes-grid">
-                    <div className="recipe-card">🥩 מתכון 1</div>
-                    <div className="recipe-card">🍳 מתכון 2</div>
-                    <div className="recipe-card">🍍 מתכון 3</div>
-                    <div className="recipe-card">🏋️‍♀️ מתכון 4</div>
+                    {recipeList.map((recipe, index) => (
+                        <div key={index} className="recipe-card" onClick={() => navigate(`/recipes/${index}`)}>
+                            {recipe.title}
+                        </div>
+                    ))}
                 </div>
 
                 <p className="coming-soon">📢 בקרוב יתווספו עוד מתכונים בריאים!</p>
