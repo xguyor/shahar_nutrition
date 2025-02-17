@@ -31,23 +31,25 @@ function Recipe() {
         };
     }, [navigate]);
 
-    // ✅ Load Instagram embed script dynamically
+    // ✅ Load Instagram embed script and process embeds for all Instagram videos
     useEffect(() => {
-        if (!window.instgrm) {
-            const script = document.createElement("script");
-            script.async = true;
-            script.src = "https://www.instagram.com/embed.js";
-            document.body.appendChild(script);
+        const loadInstagramScript = () => {
+            if (!window.instgrm) {
+                const script = document.createElement("script");
+                script.async = true;
+                script.src = "https://www.instagram.com/embed.js";
+                document.body.appendChild(script);
 
-            script.onload = () => {
-                if (window.instgrm) {
-                    window.instgrm.Embeds.process();
-                }
-            };
-        } else {
-            window.instgrm.Embeds.process();
-        }
-    }, []);
+                script.onload = () => {
+                    window.instgrm.Embeds.process(); // Process Instagram embeds for all recipes
+                };
+            } else {
+                window.instgrm.Embeds.process(); // Process if already loaded
+            }
+        };
+
+        loadInstagramScript(); // Trigger script loading and processing
+    }, []); // Run once when the component is mounted
 
     // ✅ Show error if recipe is missing
     if (!recipe) {
@@ -72,7 +74,6 @@ function Recipe() {
                         </React.Fragment>
                     ))}
                 </p>
-
 
                 {/* ✅ Instagram Video Embed */}
                 <div className="video-container">

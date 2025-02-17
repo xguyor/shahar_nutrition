@@ -109,3 +109,8 @@ main {
         padding: 30px 15px;
     }
 }
+
+/*Global elements */
+.close-btn:hover {
+    color: #020100;
+}

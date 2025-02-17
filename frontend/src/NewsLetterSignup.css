@@ -12,10 +12,9 @@
     z-index: 10000;
     backdrop-filter: blur(15px);
     overflow: hidden;
-    animation: fadeIn 0.4s ease-out;
 }
 
-/* 📌 Stylish Newsletter Signup Box */
+/* Start Hidden to Prevent Top-Left Flash */
 .newsletter-signup {
     background: linear-gradient(135deg, rgba(115, 97, 97, 0.58), #f8f9fa);
     padding: 50px;
@@ -26,10 +25,14 @@
     width: 90%;
     max-height: 85vh;
     overflow-y: auto;
-    animation: slideIn 0.4s ease-out; /* ✅ Fixed animation */
     position: relative;
     z-index: 10001;
     border: 1px solid rgba(0, 0, 0, 0.1);
+
+    /* ✅ Start Hidden to Prevent Flash */
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideIn 0.4s ease-out forwards;
 }
 
 /* ✅ Change H2 Color */
@@ -111,25 +114,15 @@
     transform: translateY(-4px);
 }
 
-/* ✅ Smooth Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* ✅ Fix: Ensure it appears in the correct position immediately */
+/* Smooth Entrance */
 @keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateY(0); /* ✅ Removed shifting */
+        transform: translateY(-20px); /* Start slightly above */
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0); /* Moves to correct position */
     }
 }
 

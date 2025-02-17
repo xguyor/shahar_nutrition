@@ -2,14 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./NewsLetterSignup.css";
 
-const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzzFVX8IdjqWJmWdJq_0PR6BJFrfdPCQBWDdaEQo_muxrn_zE02y1rbBIMz0JZpCpQbBw/exec";
+const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycby4Tp-pzPC_vco8QCVVA698d_c5urEe_A5xiWyFo3Kq8zEWDfgHey5YSi6zX169EuEv-Q/exec";
 
 const NewsLetterSignup = ({ closeOverlay }) => {
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
-        email: "",
-        goals: "Sign to newsletter",
+        email: ""
     });
 
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -58,7 +57,7 @@ const NewsLetterSignup = ({ closeOverlay }) => {
             setError("");
             console.log("Email submitted:", formData.email);
 
-            setFormData({ firstName: "", lastName: "", email: "", goals: "Sign to newsletter" });
+            setFormData({ firstName: "", lastName: "", email: ""});
 
             // ✅ Close the modal after submission (Optional)
             setTimeout(() => {

@@ -58,6 +58,39 @@
     justify-content: center; /* ✅ Center the grid */
 }
 
+.recipes-header {
+    display: flex;
+    align-items: center;  /* Ensures everything aligns vertically */
+    justify-content: center;  /* Keeps the title centered */
+    width: 100%;
+    position: relative;
+}
+
+.close-container {
+    position: absolute;
+    left: 0; /* Positions close button on the far left */
+    display: flex;
+    align-items: center;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s ease;
+    padding: 5px 15px; /* Adjust padding for better clickability */
+}
+
+.recipes-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #007bff;
+    text-align: center; /* Keeps text centered */
+    flex-grow: 1;
+}
+
 /* 🍽️ Recipe Card */
 .recipe-card {
     background: #e8f5e9;

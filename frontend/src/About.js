@@ -12,7 +12,13 @@ function About({ closeOverlay }) {
     return (
         <div className="overlay overlay-active" onClick={handleClickOutside}>
             <div className="overlay-content">
-                <h2>תכנית הליווי - אורח חיים בריא</h2>
+                <div className="about-header">
+                    <div className="close-container">
+                        <button className="close-btn" onClick={closeOverlay || (() => navigate("/"))}>✖</button>
+                    </div>
+                    <h2 className="about-title">תכנית הליווי - אורח חיים בריא</h2>
+                </div>
+
 
                 <div className="program-section">
                     <h3>1. מטרות התהליך</h3>
