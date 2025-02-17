@@ -14,22 +14,33 @@
     overflow-x: hidden;
 }
 
-/* 📌 Recipe Content Box - Now Scrollable */
+/* 📌 Recipe Content Box - Now Scrollable but Hidden Scrollbar */
 .recipe-content {
     background: white;
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     text-align: center;
-    max-width: 450px; /* ✅ Smaller Box */
+    max-width: 450px;
     width: 85%;
-    max-height: 80vh; /* ✅ Adjust for scrolling */
-    overflow-y: auto; /* ✅ Allows scrolling inside */
+    max-height: 80vh;
+    overflow-y: auto; /* ✅ Allows scrolling but hides scrollbar */
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.3s ease-in-out;
+}
+
+/* ✅ Hide scrollbar for all elements */
+.recipe-content::-webkit-scrollbar,
+.recipe-text.expanded::-webkit-scrollbar {
+    display: none; /* ✅ Hides scrollbar on WebKit browsers */
+}
+
+.recipe-content {
+    -ms-overflow-style: none;  /* ✅ Hides scrollbar in IE/Edge */
+    scrollbar-width: none;  /* ✅ Hides scrollbar in Firefox */
 }
 
 /* ✅ Title & Close Button */
@@ -69,7 +80,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    text-shadow: none !important; /* ✅ Remove text shadow */
+    text-shadow: none !important;
     cursor: pointer;
     transition: max-height 0.3s ease-in-out;
 }
@@ -82,14 +93,9 @@
     white-space: normal;
     padding: 0;
     cursor: pointer;
-    background: none; /* ✅ Removed Background */
+    background: none;
     border-radius: 0;
-    text-shadow: none !important; /* ✅ Remove text shadow */
-}
-
-/* ✅ Remove scrollbar from text */
-.recipe-text.expanded::-webkit-scrollbar {
-    display: none;
+    text-shadow: none !important;
 }
 
 /* 🎥 Video Container */
@@ -106,20 +112,6 @@
     height: 280px;
     border-radius: 15px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* ✅ Make entire component scrollable */
-.recipe-content::-webkit-scrollbar {
-    width: 5px;
-}
-
-.recipe-content::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-}
-
-.recipe-content::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
 }
 
 /* ✅ Mobile Adjustments */
@@ -139,6 +131,6 @@
     }
 
     .video-container iframe {
-        height: 250px;
+        height: 550px;
     }
 }
