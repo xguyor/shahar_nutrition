@@ -97,15 +97,15 @@ const NewsLetterSignup = ({ closeOverlay }) => {
                                 value={formData.lastName}
                                 onChange={handleChange}
                             />
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="כתובת אימייל"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
                         </div>
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="כתובת אימייל"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                        />
                         <button type="submit" className="submit-btn">
                             לחץ להרשמה!
                         </button>
