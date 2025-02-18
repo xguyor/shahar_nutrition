@@ -75,8 +75,6 @@ function NavBar() {
         <>
             <nav ref={navRef} className={`navbar ${scrolled ? "scrolled" : ""}`}>
                 <div className="navbar-container">
-                    <a href="#home" className="logo">🥗 Shahar Nutrition</a>
-
                     <div className={`nav-links ${menuOpen ? "active" : ""}`}>
                         <a href="#about" onClick={openAbout}>📖 אודות</a>
                         <a href="#recipes" onClick={openRecipes}>🍽️ מתכונים</a>
