@@ -9,36 +9,39 @@ function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [aboutOpen, setAboutOpen] = useState(false);
     const [recipesOpen, setRecipesOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
     const [newsletterOpen, setNewsletterOpen] = useState(false);
-
     const navRef = useRef(null);
 
     const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
+        setMenuOpen((prev) => !prev);
     };
 
-    const openAbout = (event) => {
-        event.preventDefault();
+    const closeMenu = () => {
+        setMenuOpen(false); // ✅ Ensures menu always closes
+    };
+
+    const openAbout = (e) => {
+        e.preventDefault();
         setAboutOpen(true);
         setRecipesOpen(false);
-        setMenuOpen(false);
+        setNewsletterOpen(false);
+        closeMenu();
     };
 
-    const openRecipes = (event) => {
-        event.preventDefault();
+    const openRecipes = (e) => {
+        e.preventDefault();
         setRecipesOpen(true);
         setAboutOpen(false);
-        setMenuOpen(false);
+        setNewsletterOpen(false);
+        closeMenu(); // ✅ Close menu after click
     };
 
-
-    const openNewsletter = (event) => {
-        event.preventDefault();
-        setRecipesOpen(false);
-        setAboutOpen(false);
-        setMenuOpen(false);
+    const openNewsletter = (e) => {
+        e.preventDefault();
         setNewsletterOpen(true);
+        setAboutOpen(false);
+        setRecipesOpen(false);
+        closeMenu(); // ✅ Close menu after click
     };
 
     const closeOverlays = () => {
@@ -50,7 +53,7 @@ function NavBar() {
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (navRef.current && !navRef.current.contains(event.target)) {
-                setMenuOpen(false);
+                closeMenu(); // ✅ Close menu when clicking outside
             }
         };
 
@@ -60,25 +63,16 @@ function NavBar() {
         };
     }, []);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
-
     return (
         <>
-            <nav ref={navRef} className={`navbar ${scrolled ? "scrolled" : ""}`}>
+            <nav ref={navRef} className="navbar">
                 <div className="navbar-container">
+                    <p className="navbar-text"> שחר אור - shahar nutrition</p>
+                    <div className="navbar-image"/>
                     <div className={`nav-links ${menuOpen ? "active" : ""}`}>
                         <a href="#about" onClick={openAbout}>📖 אודות</a>
                         <a href="#recipes" onClick={openRecipes}>🍽️ מתכונים</a>
-                        <a href="#newsletter" onClick={openNewsletter}>📩 ידיעון שבועי</a> {/* Link to toggle the newsletter form */}
+                        <a href="#newsletter" onClick={openNewsletter}>📩 ידיעון שבועי</a>
                     </div>
 
                     <div className="menu-icon" onClick={toggleMenu}>

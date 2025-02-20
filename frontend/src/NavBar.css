@@ -1,67 +1,91 @@
-/* ✅ Import Google Fonts */
-
-/* Main Navigation Bar */
 .navbar {
     position: fixed;
     width: 100%;
-    height: 5%;
+    height: 80px; /* Fixed height */
     top: 0;
-    right: 0;
     left: 0;
-    background-image: url('../images/logo.jpg'); /* Replace with the actual path */
-    background-size: 100% auto; /* Stretches width but keeps natural height */
-    background-position: center top;
-    background-repeat: no-repeat;
+    background-color: rgba(97, 174, 213, 0.96); /* Navbar background */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
-    padding: 6% 3%;
+    padding: 0 3%;
     z-index: 1000;
     border-bottom: 3px solid #303948;
     direction: ltr;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Scrolled Effect */
-.navbar.scrolled {
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+.navbar-image {
+    content: "";
+    width: 60px; /* Fixed width */
+    height: 60px; /* Fixed height ensures a perfect circle */
+    background-image: url('../images/navBarBackground.jpg');
+    background-size: cover; /* Ensures full coverage without distortion */
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 3px solid #9d3a3a; /* Border color */
+    border-radius: 50%; /* Perfect circle */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Optional shadow */
+    position: absolute;
+    left: 75%;
+    transform: translateX(-50%);
+    z-index: 1; /* Keeps image above navbar background */
 }
 
-/* Navbar Layout */
+.navbar-text {
+    text-align: center; /* Center text horizontally */
+    font-size: 1.3rem;
+    font-family: 'Arial', sans-serif;
+    direction: rtl;
+    margin: 0;
+    padding-right: 120px;
+    z-index: 1; /* Ensure text stays above background but doesn’t overlap image */
+}
+
+/* ✅ Navbar Layout */
 .navbar-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     max-width: 1200px;
+    height: 100%;
     margin: auto;
 }
 
-/* Navigation Links */
+/* ✅ Navigation Links */
 .nav-links {
-    display: flex;
+    display: none; /* Hidden by default (mobile view) */
     gap: 20px;
     margin-right: auto;
 }
 
-/* Navbar Link Styling */
+/* ✅ Active Menu */
+.nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 105%;
+    right: 6%;
+    background: #2d394d;
+    padding: 10px 15px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* ✅ Navbar Link Styling */
 .nav-links a {
     position: relative;
-    display: inline-block;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: rgba(161, 228, 255, 0.96);
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: 8px;
-    transition: color 0.3s ease, transform 0.3s ease-in-out;
-    direction: rtl;
     text-align: right;
+    transition: color 0.3s ease, transform 0.3s ease-in-out;
 }
 
-/* Hover Effect */
-.nav-links a:hover {
-    color: #f1f8e9;
-    transform: translateY(-3px);
-}
-
-/* Underline Effect on Hover */
+/* ✅ Underline Effect on Hover */
 .nav-links a::after {
     content: "";
     position: absolute;
@@ -70,7 +94,7 @@
     width: 0%;
     height: 3px;
     background: #ffffff;
-    transition: width 0.3s ease-out, left 0.3s ease-out;
+    transition: width 0.3s ease, left 0.3s ease;
 }
 
 .nav-links a:hover::after {
@@ -78,49 +102,30 @@
     left: 0;
 }
 
+/* ✅ Hamburger Menu */
 .menu-icon {
-    font-size: 2rem; /* Scales between 1.8rem and 2.5rem */
+    font-size: 2rem;
     cursor: pointer;
-    display: block; /* Ensures visibility */
     color: white;
-    transition: all 0.4s ease-in-out;
     position: absolute;
-    right: 4%;
+    right: 10%;
     top: 50%;
-    transform: translateY(-50%); /* Centers it vertically */
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
 }
 
-/* Hover Effect */
 .menu-icon:hover {
-    transform: scale(1.3);
+    transform: translateY(-50%) scale(1.2);
 }
 
-/* Click Effect */
 .menu-icon:active {
-    transform: scale(0.95);
+    transform: translateY(-50%) scale(0.95);
 }
 
-/* Responsive for Mobile */
+/* ✅ Mobile Responsiveness */
 @media screen and (max-width: 768px) {
     .nav-links {
-        position: absolute;
-        top: 108px;
-        right: 3px;
-        background: #2d394d;
-        padding: 7px;
-        transform: translateY(-20px); /* Start slightly above */
-        opacity: 0;
-        visibility: hidden;
         flex-direction: column;
-        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-        border-radius: 12px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    }
-
-    .nav-links.active {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0); /* Moves to normal position */
     }
 
     .menu-icon {
@@ -128,3 +133,18 @@
     }
 }
 
+/* ✅ Desktop View - Navbar is Consistent */
+@media screen and (min-width: 1920px) {
+    .nav-links {
+        display: flex; /* Always visible on large screens */
+        position: static;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        gap: 25px;
+    }
+
+    .menu-icon {
+        display: none; /* Hide hamburger menu */
+    }
+}

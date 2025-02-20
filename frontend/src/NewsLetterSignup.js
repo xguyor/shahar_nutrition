@@ -75,6 +75,7 @@ const NewsLetterSignup = ({ closeOverlay }) => {
 
     return (
         <div className="newsletter-overlay">
+            <div className="newsletter-image"/>
             <div ref={overlayRef} className="newsletter-signup">
                 <h2>📝 רישום לידיעון השבועי שלנו</h2>
                 {isSubmitted ? (
