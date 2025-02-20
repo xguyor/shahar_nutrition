@@ -77,7 +77,7 @@ const NewsLetterSignup = ({ closeOverlay }) => {
         <div className="newsletter-overlay">
             <div className="newsletter-image"/>
             <div ref={overlayRef} className="newsletter-signup">
-                <h2>📝 רישום לידיעון השבועי שלנו</h2>
+                <h2>📝 רישום לידיעון השבועי  👇🏻</h2>
                 {isSubmitted ? (
                     <p className="success-message">תודה על ההרשמה! מידע שימושי בדרך אליך!</p>
                 ) : (
@@ -101,14 +101,14 @@ const NewsLetterSignup = ({ closeOverlay }) => {
                             <input
                                 type="email"
                                 name="email"
-                                placeholder="כתובת אימייל"
+                                placeholder="כתובת מייל"
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
                             />
                         </div>
                         <button type="submit" className="submit-btn">
-                            לחץ להרשמה!
+                            להרשמה!
                         </button>
                         {error && <p className="error-message">{error}</p>}
                     </form>
