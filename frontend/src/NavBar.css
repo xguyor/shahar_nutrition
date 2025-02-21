@@ -15,22 +15,46 @@
     justify-content: center;
 }
 
+/* ✅ Navbar Image - Prevent Click Blocking */
 .navbar-image {
     content: "";
-    width: 60px; /* Fixed width */
-    height: 60px; /* Fixed height ensures a perfect circle */
+    width: 60px;
+    height: 60px;
     background-image: url('../images/navBarBackground.jpg');
-    background-size: cover; /* Ensures full coverage without distortion */
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border: 3px solid #9d3a3a; /* Border color */
-    border-radius: 50%; /* Perfect circle */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Optional shadow */
+    border: 3px solid #9d3a3a;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     position: absolute;
     left: 75%;
     transform: translateX(-50%);
-    z-index: 1; /* Keeps image above navbar background */
+    z-index: 1;
+    pointer-events: none; /* ✅ Prevents blocking menu clicks */
 }
+
+/* ✅ Hamburger Menu */
+.menu-icon {
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2; /* ✅ Ensure it's above the image */
+    transition: transform 0.3s ease;
+}
+
+.menu-icon:hover {
+    transform: translateY(-50%) scale(1.2);
+}
+
+.menu-icon:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
 
 .navbar-text {
     text-align: center; /* Center text horizontally */
@@ -100,26 +124,6 @@
 .nav-links a:hover::after {
     width: 100%;
     left: 0;
-}
-
-/* ✅ Hamburger Menu */
-.menu-icon {
-    font-size: 2rem;
-    cursor: pointer;
-    color: white;
-    position: absolute;
-    right: 10%;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: transform 0.3s ease;
-}
-
-.menu-icon:hover {
-    transform: translateY(-50%) scale(1.2);
-}
-
-.menu-icon:active {
-    transform: translateY(-50%) scale(0.95);
 }
 
 /* ✅ Mobile Responsiveness */
