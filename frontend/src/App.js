@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 import PreviewPage from "./preview";
 import MainPage from "./mainPage";
 import NewsLetterSignup from "./NewsLetterSignup";
-import Recipes from "./Recipes";
-import Recipe from "./Recipe";
 
 function App() {
     const [showPreview, setShowPreview] = useState(true);
@@ -22,10 +20,11 @@ function App() {
                     element={showPreview ? <PreviewPage onEnter={handleEnter} /> : <MainPage />}
                 />
 
+                {/*landing page*/}
+                <Route path="/mainPage" element={<MainPage />} />
+
                 {/* ✅ Direct Route for Newsletter Signup */}
                 <Route path="/newsletter" element={<NewsLetterSignup />} />
-                <Route path="/recipes" element={<Recipes />} />
-                <Route path="/recipes/:id" element={<Recipe />} />
 
                 {/* ✅ Redirect Unknown Routes to Home */}
                 <Route path="*" element={<Navigate to="/" />} />
