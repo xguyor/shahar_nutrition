@@ -2342,6 +2342,11 @@ input, select, textarea {
 				width: 100%;
 			}
 
+			#banner .actions {
+				position: relative;
+				left: -2%;
+			}
+
 /* Icons */
 
 	ul.icons {
@@ -3385,7 +3390,7 @@ input, select, textarea {
 		-webkit-align-items: center;
 		-ms-align-items: center;
 		align-items: center;
-		background-image: url("../../images/banner.jpg");
+		background-image: url("../../images/2.png");
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -3536,7 +3541,6 @@ input, select, textarea {
 		}
 
 		@media screen and (max-width: 1280px) {
-
 			#banner {
 				background-attachment: scroll;
 			}

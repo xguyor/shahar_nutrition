@@ -33,7 +33,7 @@
             <li><a href="index.html">דף הבית</a></li>
             <li><a href="aboutMe.html">קצת עליי</a></li>
             <li><a href="recipes.html">מתכונים</a></li>
-            <li><a href="../newsletter/index.html">ידיעון שובבון </a></li>
+            <li><a href="newsletter.html">ידיעון שובבון </a></li>
         </ul>
         <!--						<ul class="actions stacked">
                                     <li><a href="#" class="button primary fit">Get Started</a></li>
@@ -90,6 +90,9 @@
     <section id="contact">
         <div class="inner">
             <section>
+                <header class="major">
+                    <h2>צרו קשר</h2>
+                </header>
                 <form id="contact-form">
                     <div class="fields">
                         <div class="field half">
@@ -131,6 +134,7 @@
                 <li><a href="https://www.instagram.com/shahar_nutrition/" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
                 <li><a href="https://www.facebook.com/search/top?q=shahar%20or" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
                 <li><a href="https://www.tiktok.com/@shahar_nutrition" class="icon brands alt fa-tiktok"><span class="label">Tiktok</span></a></li>
+                <li><a href="https://www.youtube.com/@Shahar_nutrition" class="icon brands alt fa-youtube"><span class="label">Youtube</span></a></li>
             </ul>
             <ul class="copyright">
                 <li>&copy; Inc</li>
@@ -160,6 +164,8 @@
                 goals: document.getElementById("goals").value,
             };
 
+            form.reset();
+
             fetch(GOOGLE_SHEET_API_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -167,7 +173,6 @@
                 body: JSON.stringify(formData),
             }).then(() => {
                 successMessage.classList.add("show");
-                form.reset();
 
                 setTimeout(() => {
                     successMessage.classList.remove("show");
