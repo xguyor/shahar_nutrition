@@ -44,17 +44,18 @@
     <section id="banner" class="major">
         <div class="inner">
             <header class="major">
-                <h1>שלום, אני שחר נוטרישן</h1>
+                <h1>שלום, אני שחר אור</h1>
             </header>
             <div class="content">
-                <p>כאן תמצאו מלא שישקבב על אוכל ואורח חיים בריא<br/>
-                    בואו ויהיה כיף.</p>
+                <p>ברוכים הבאים! כאן תמצאו תוכן על תזונה בריאה, פשוטה ומאוזנת – בלי בולשיט, ועם הרבה טעם טוב לחיים.<br/>
+                    רוצים להרגיש טוב יותר בלי להסתבך? הגעתם למקום הנכון.</p>
                 <ul class="actions">
                     <li><a href="#one" class="button next scrolly">בואו נתחיל</a></li>
                 </ul>
             </div>
         </div>
     </section>
+
 
     <!-- Main -->
     <div id="main">
@@ -104,6 +105,9 @@
                             src="" frameborder="0" allowfullscreen>
                     </iframe>
                 </div>
+                <header class="major">
+                    <a id="video-link" href="#" class="link" target="_blank"></a>
+                </header>
             </article>
 
             <script>
@@ -134,6 +138,7 @@
 
                         // עדכון ה-iframe עם הסרטון החדש
                         document.getElementById("video-frame").src = `https://www.youtube.com/embed/${videoId}`;
+                        document.getElementById("video-link").href = `https://www.youtube.com/watch?v=${videoId}`;
                     } catch (error) {
                         console.error("❌ שגיאה בטעינת הסרטון:", error);
                     }
