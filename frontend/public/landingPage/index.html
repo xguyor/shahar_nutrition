@@ -32,7 +32,7 @@
             <li><a href="index.html">דף הבית</a></li>
             <li><a href="aboutMe.html">קצת עליי</a></li>
             <li><a href="recipes.html">מתכונים</a></li>
-            <li><a href="newsletter.html">ידיעון שובבון </a></li>
+            <li><a href="newsletter.html">ידיעון </a></li>
         </ul>
         <!--						<ul class="actions stacked">
                                     <li><a href="#" class="button primary fit">Get Started</a></li>
@@ -66,63 +66,82 @@
 										<img src="/landingPage/images/recipe1.png" alt=""/>
 									</span>
                 <header class="major">
-                    <h3><a href="/landingPage/recipes.html#recipe1" class="link">מתכון 1</a></h3>
+                    <h3><a href="/landingPage/recipes.html" class="link">מתכונים</a></h3>
                     <p>משהו משהו </p>
                 </header>
             </article>
+            <!--     <article>
+                                         <span class="image">
+                                             <img src="/landingPage/images/recipe2.png" alt=""/>
+                                         </span>
+                     <header class="major">
+                         <h3><a href="/landingPage/recipes.html#recipe2" class="link">מתכון 2</a></h3>
+                         <p>משהו משהו </p>
+                     </header>
+                 </article>
+                 <article>
+                                         <span class="image">
+                                             <img src="/landingPage/images/recipe3.png" alt=""/>
+                                         </span>
+                     <header class="major">
+                         <h3><a href="/landingPage/recipes.html#recipe3" class="link">מתכון 3</a></h3>
+                         <p>משהו משהו </p>
+                     </header>
+                 </article>
+                 <article>
+                                         <span class="image">
+                                             <img src="/landingPage/images/recipe4.png" alt=""/>
+                                         </span>
+                     <header class="major">
+                         <h3><a href="/landingPage/recipes.html#recipe4" class="link">מתכון 4</a></h3>
+                         <p>משהו משהו </p>
+                     </header>
+                 </article>
+     -->
             <article>
-									<span class="image">
-										<img src="/landingPage/images/recipe2.png" alt=""/>
-									</span>
-                <header class="major">
-                    <h3><a href="/landingPage/recipes.html#recipe2" class="link">מתכון 2</a></h3>
-                    <p>משהו משהו </p>
-                </header>
-            </article>
-            <article>
-									<span class="image">
-										<img src="/landingPage/images/recipe3.png" alt=""/>
-									</span>
-                <header class="major">
-                    <h3><a href="/landingPage/recipes.html#recipe3" class="link">מתכון 3</a></h3>
-                    <p>משהו משהו </p>
-                </header>
-            </article>
-            <article>
-									<span class="image">
-										<img src="/landingPage/images/recipe4.png" alt=""/>
-									</span>
-                <header class="major">
-                    <h3><a href="/landingPage/recipes.html#recipe4" class="link">מתכון 4</a></h3>
-                    <p>משהו משהו </p>
-                </header>
+                <div class="video-wrapper">
+                    <iframe id="video-frame" width="100%" height="400"
+                            src="" frameborder="0" allowfullscreen>
+                    </iframe>
+                </div>
             </article>
 
-            <article>
-									<span class="image">
-									  <img src="https://img.youtube.com/vi/FpaPgTWFpJ8/maxresdefault.jpg"
-                                           alt="תצוגה מקדימה לסרטון"/>
-									</span>
-                </a>
-                <header class="major">
-                    <h3><a href="https://www.youtube.com/watch?v=FpaPgTWFpJ8" target="_blank" class="link">צפו בסרטון
-                        🎥</a></h3>
-                    <p>משהו משהו</p>
-                </header>
-            </article>
+            <script>
+                const CHANNEL_ID = "UCTD8JBEtEbuQULxAG-w5mSQ"; // מזהה ערוץ YouTube
+                const PROXY_URL = "https://api.allorigins.win/get?url=";
+                const RSS_URL = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
 
-            <article>
-									<span class="image">
-									  <img src="https://img.youtube.com/vi/BnS-FVjm8j4/maxresdefault.jpg"
-                                           alt="תצוגה מקדימה לסרטון"/>
-									</span>
-                </a>
-                <header class="major">
-                    <h3><a href="https://www.youtube.com/watch?v=BnS-FVjm8j4" target="_blank" class="link">צפו בסרטון
-                        🎥</a></h3>
-                    <p>משהו משהו</p>
-                </header>
-            </article>
+                async function fetchLatestVideo() {
+                    try {
+                        console.log("🔄 מבצע טעינה...");
+
+                        const response = await fetch(PROXY_URL + encodeURIComponent(RSS_URL));
+                        const json = await response.json();
+                        const text = json.contents;
+                        console.log("✅ קיבלנו את ה-RSS:", text);
+
+                        const parser = new DOMParser();
+                        const xml = parser.parseFromString(text, "text/xml");
+                        const entry = xml.querySelector("entry");
+
+                        if (!entry) {
+                            throw new Error("לא נמצא סרטון");
+                        }
+
+                        const videoId = entry.querySelector("yt\\:videoId, videoId").textContent;
+
+                        console.log(`📌 טוען סרטון (ID: ${videoId})`);
+
+                        // עדכון ה-iframe עם הסרטון החדש
+                        document.getElementById("video-frame").src = `https://www.youtube.com/embed/${videoId}`;
+                    } catch (error) {
+                        console.error("❌ שגיאה בטעינת הסרטון:", error);
+                    }
+                }
+
+                // קריאה לפונקציה בעת טעינת הדף
+                fetchLatestVideo();
+            </script>
         </section>
 
         <!-- Two -->
