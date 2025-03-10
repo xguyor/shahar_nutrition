@@ -68,38 +68,11 @@
 									</span>
                 <header class="major">
                     <h3><a href="/landingPage/recipes.html" class="link">מתכונים</a></h3>
-                    <p>משהו משהו </p>
+                    <p>מתכונים טעימים ובריאים! </p>
                 </header>
             </article>
-            <!--     <article>
-                                         <span class="image">
-                                             <img src="/landingPage/images/recipe2.png" alt=""/>
-                                         </span>
-                     <header class="major">
-                         <h3><a href="/landingPage/recipes.html#recipe2" class="link">מתכון 2</a></h3>
-                         <p>משהו משהו </p>
-                     </header>
-                 </article>
-                 <article>
-                                         <span class="image">
-                                             <img src="/landingPage/images/recipe3.png" alt=""/>
-                                         </span>
-                     <header class="major">
-                         <h3><a href="/landingPage/recipes.html#recipe3" class="link">מתכון 3</a></h3>
-                         <p>משהו משהו </p>
-                     </header>
-                 </article>
-                 <article>
-                                         <span class="image">
-                                             <img src="/landingPage/images/recipe4.png" alt=""/>
-                                         </span>
-                     <header class="major">
-                         <h3><a href="/landingPage/recipes.html#recipe4" class="link">מתכון 4</a></h3>
-                         <p>משהו משהו </p>
-                     </header>
-                 </article>
-     -->
-            <article>
+
+            <article id="video-article">
                 <div class="video-wrapper">
                     <iframe id="video-frame" width="100%" height="400"
                             src="" frameborder="0" allowfullscreen>
@@ -109,6 +82,73 @@
                     <a id="video-link" href="#" class="link" target="_blank"></a>
                 </header>
             </article>
+
+
+            <style>
+                #video-article {
+                    position: relative;
+                    background-image: url('../landingPage/images/banner.jpg'); /* תמונת ברירת מחדל */
+                    background-size: cover;
+                    background-position: center center; /* ממרכז את התמונה גם במובייל */
+                    background-repeat: no-repeat;
+                    padding: 20px;
+                    border-radius: 10px;
+                    min-height: 300px; /* מבטיח שהתמונה תהיה בגובה סביר גם בלי וידאו */
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                /* וידאו יתאים את הגודל שלו כדי לא לצאת מהמסגרת */
+                .video-wrapper {
+                    position: relative;
+                    z-index: 2;
+                    width: 100%;
+                    max-width: 600px; /* מגביל את הרוחב של הוידאו כדי לשמור על פרופורציות */
+                }
+
+                /* שכבת הכהות על התמונה */
+                #video-article::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.5);
+                    z-index: 1;
+                    border-radius: 10px;
+                }
+
+                /* כותרת תהיה תמיד באמצע ותשמור על קריאות */
+                .major {
+                    position: relative;
+                    z-index: 3;
+                    text-align: center;
+                    color: white;
+                    font-size: 1.5rem; /* כותרת גדולה וברורה */
+                    font-weight: bold;
+                }
+
+                /* תיקון נוסף למובייל */
+                @media screen and (max-width: 768px) {
+                    #video-article {
+                        padding: 15px;
+                        min-height: 250px;
+                        background-size: contain; /* מבטיח שהתמונה תישאר בתוך המסגרת במובייל */
+                    }
+
+                    .video-wrapper {
+                        max-width: 100%; /* מבטיח שהוידאו לא יגלוש החוצה */
+                    }
+
+                    .major {
+                        font-size: 1.2rem; /* כותרת קטנה יותר במובייל */
+                    }
+                }
+
+            </style>
 
             <script>
                 const CHANNEL_ID = "UCTD8JBEtEbuQULxAG-w5mSQ"; // מזהה ערוץ YouTube
