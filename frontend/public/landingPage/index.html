@@ -46,7 +46,7 @@
             <header class="major">
                 <h1></h1>
             </header>
-            <div class="content">
+            <div class="stack-panel">
                 <p>ברוכים הבאים! כאן תמצאו תוכן על תזונה בריאה, פשוטה ומאוזנת – בלי שטויות, הרבה כנות, טעם טוב ונוחות לחיי היום-יום.</p>
                 <p>אני מאמין שאין סיבה להסתבך כדי לאכול בריא – כל מה שצריך זה להבין את הבסיס ולהיות קשובים לגוף שלכם.</p>
                 <p>הדרך לאכול בריא ולהרגיש טוב לא קשורה רק באיכות המזון, אלא גם בהרגלי אכילה והתנהגות שהיו קיימים אצל בני אדם מאז ומתמיד.</p>
@@ -67,26 +67,57 @@
 
         <!-- One -->
         <section id="one" class="tiles">
-            <article>
-<!--									<span class="image">
-										<img src="/landingPage/images/recipe1.png" alt=""/>
-									</span>-->
+            <article id="recipe-article">
+                <span class="image">
+<!--                    <img src="/landingPage/images/banner.jpg" alt=""/>-->
+                </span>
                 <header class="major">
-                    <h3><a href="/landingPage/recipes.html" class="link">מתכונים</a></h3>
+                    <h3><a href="/landingPage/recipes.html" class="link"></a></h3>
                     <p>מתכונים טעימים ובריאים! </p>
                 </header>
             </article>
 
-            <article id="video-article">
-                <div class="video-wrapper">
-                    <iframe id="video-frame" width="100%" height="400"
-                            src="" frameborder="0" allowfullscreen>
-                    </iframe>
-                </div>
-                <header class="major">
-                    <a id="video-link" href="#" class="link" target="_blank"></a>
-                </header>
-            </article>
+            <script>
+                let animationTriggered = false; // Flag to track whether animation has been triggered
+
+                // Function to detect when an element is in the middle 1/7 range of the viewport
+                function isElementInMiddleRange(el) {
+                    const rect = el.getBoundingClientRect();
+                    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+                    // Divide the screen into 7 parts and trigger animation if the element is outside the middle 1/7 range
+                    const middleStart = windowHeight / 3;  // 1/3 of the height (middle 1/7 is roughly within 1/3 of the screen)
+                    const middleEnd = windowHeight * 2 / 3;  // 2/3 of the height
+
+                    // Check if the element is outside the middle 1/7 and comes back into it
+                    return (rect.top < middleStart || rect.bottom > middleEnd) && rect.bottom > 0 && rect.top < windowHeight;
+                }
+
+                // Function to reset the animation so that it can be triggered again
+                function resetAnimation() {
+                    const article = document.getElementById('recipe-article');
+                    article.classList.remove('animate'); // Remove the class to reset the animation
+                    void article.offsetWidth; // Trigger reflow to reset the animation
+                    article.classList.add('animate'); // Re-add the class to trigger the animation
+                }
+
+                // Scroll event listener to trigger animation when the element goes out of the middle and back in view
+                window.addEventListener('scroll', function() {
+                    const article = document.getElementById('recipe-article');
+
+                    // Only trigger the animation if it hasn't been triggered yet, to prevent flickering
+                    if (isElementInMiddleRange(article) && !animationTriggered) {
+                        resetAnimation();
+                        animationTriggered = true; // Set the flag to true once the animation is triggered
+                    }
+
+                    // Reset the flag if the element is no longer in the middle range (so the animation can be triggered again)
+                    if (!isElementInMiddleRange(article) && animationTriggered) {
+                        animationTriggered = false;
+                    }
+                });
+
+            </script>
 
 
             <style>
@@ -97,7 +128,6 @@
                     background-position: center center; /* ממרכז את התמונה גם במובייל */
                     background-repeat: no-repeat;
                     padding: 20px;
-                    border-radius: 10px;
                     min-height: 300px; /* מבטיח שהתמונה תהיה בגובה סביר גם בלי וידאו */
                     display: flex;
                     flex-direction: column;
@@ -123,7 +153,6 @@
                     height: 100%;
                     background: rgba(0, 0, 0, 0.5);
                     z-index: 1;
-                    border-radius: 10px;
                 }
 
                 /* כותרת תהיה תמיד באמצע ותשמור על קריאות */
@@ -245,6 +274,18 @@
             </section>
         </div>
     </section>
+
+<!--    <article id="video-article">
+        <div class="video-wrapper">
+            <iframe id="video-frame" width="100%" height="400"
+                    src="" frameborder="0" allowfullscreen>
+            </iframe>
+        </div>
+        <header class="major">
+            <a id="video-link" href="#" class="link" target="_blank"></a>
+        </header>
+    </article>-->
+
 </div>
 
 <!-- Footer -->

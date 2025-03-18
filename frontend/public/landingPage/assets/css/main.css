@@ -1766,6 +1766,34 @@ input, select, textarea {
 		}
 
 /* Section/Article */
+/* Scale animation */
+@keyframes scaleUp {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1); /* Grow a bit */
+	}
+	100% {
+		transform: scale(1); /* Back to normal size */
+	}
+}
+
+/* Default state: not animated */
+#recipe-article {
+	opacity: 0;
+	transform: translateY(20px);  /* Start from below */
+	transition: transform 0.3s, opacity 0.3s, border 0.3s;  /* Smooth transition */
+	padding: 20px;  /* Padding inside the article to avoid text touching the border */
+	border-radius: 8px; /* Optional: adds rounded corners to the border */
+}
+
+/* Animated state: when article comes into view */
+#recipe-article.animate {
+	opacity: 1;
+	transform: translateY(0);  /* Move to its original position */
+	animation: scaleUp 1s ease forwards; /* Apply the scaling effect */
+}
 
 	section.special, article.special {
 		text-align: center;
@@ -2896,20 +2924,43 @@ input, select, textarea {
 
 		}
 
-		@media screen and (max-width: 736px) {
+@media screen and (max-width: 736px) {
+	#one.tiles {
+		border-top: 2px solid white;  /* Add a line at the top */
+		border-bottom: 2px solid white;  /* Add a line at the bottom */
+		padding: 2em 0;  /* Add some space inside the section (top and bottom padding) */
+	}
 
-			.tiles article {
-				padding: 3em 1.5em 1em 1.5em ;
-				height: 16em;
-				max-height: none;
-				min-height: 0;
-			}
+	/* Styling the article */
+	.tiles article {
+		padding: 2em 1.5em;   /* Reduced padding for better space distribution */
+		height: auto;          /* Allow height to adjust automatically */
+		max-height: none;
+		min-height: 0;
+		width: 100%;           /* Make article full width */
+		box-sizing: border-box; /* Include padding in width calculation */
+		border-radius: 8px;    /* Rounded corners for the border */
+		text-align: center;    /* Center the content */
+		margin: 0 auto;        /* Center the article horizontally */
+	}
 
-				.tiles article h3 {
-					font-size: 1.5em;
-				}
+	/* Styling the h3 (headline) */
+	.tiles article h3 {
+		font-size: 1.5em;      /* Set the font size */
+		margin-bottom: 1em;    /* Add some space below the heading */
+		text-align: center;    /* Ensure the heading is centered */
+	}
 
-		}
+	/* Optional: Make the paragraph or text inside the article wider */
+	.tiles article p {
+		font-size: 1.1em;      /* Increase the font size */
+		line-height: 1.6;      /* Adjust line height for better readability */
+		text-align: center;    /* Center the paragraph text */
+		margin: 0 auto;        /* Center the text container */
+		width: 80%;            /* Make the text container more wide */
+	}
+}
+
 
 		@media screen and (max-width: 480px) {
 
@@ -3400,8 +3451,27 @@ input, select, textarea {
 		}
 
 /* Banner */
+#banner .inner {
+				text-align: right;  /* Align all text inside this container to the right */
+			}
 
-	#banner {
+.stack-panel p {
+	text-align: right;  /* Align paragraphs to the right */
+}
+
+.actions .centered {
+	text-align: center;  /* Center the button */
+	width: 100%;          /* Ensure it takes full width of its parent */
+	display: flex;
+	justify-content: center;  /* This ensures the button is horizontally centered */
+}
+
+button {
+	display: inline-block;  /* Makes sure the button is treated as an inline element */
+}
+
+
+#banner {
 		-moz-align-items: center;
 		-webkit-align-items: center;
 		-ms-align-items: center;
