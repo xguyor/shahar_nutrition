@@ -2948,6 +2948,7 @@ input, select, textarea {
 	.tiles article h3 {
 		font-size: 0.1em;      /* Set the font size */
 		margin-bottom: 1em;    /* Add some space below the heading */
+		margin-right: 1em;
 		text-align: center;    /* Ensure the heading is centered */
 	}
 
