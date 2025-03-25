@@ -2957,7 +2957,7 @@ input, select, textarea {
 		font-size: 1.1em;      /* Increase the font size */
 		line-height: 1.6;      /* Adjust line height for better readability */
 		text-align: center;    /* Center the paragraph text */
-		margin: 0 auto;        /* Center the text container */
+		margin: 0 30px;        /* Center the text container */
 		width: 80%;            /* Make the text container more wide */
 	}
 }
